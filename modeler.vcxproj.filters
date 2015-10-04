@@ -13,6 +13,12 @@
       <UniqueIdentifier>{ac43d088-4d1d-480e-a526-c45f9e450f72}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{47409a35-61f0-46a8-a41b-042f8c6fa0b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{415e252f-65e7-438c-8930-fda21fe44807}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitmap.cpp">
@@ -35,6 +41,15 @@
     </ClCompile>
     <ClCompile Include="sample.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\modelController.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\model.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMei.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +79,18 @@
     </ClInclude>
     <ClInclude Include="vec.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\modelController.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\model.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMei.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\modelUpperBody.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
