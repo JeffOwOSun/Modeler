@@ -128,6 +128,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -172,9 +173,14 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="model\MengMei.cpp" />
+    <ClCompile Include="model\MengMeiHead.cpp" />
+    <ClCompile Include="model\MengMeiThroax.cpp" />
+    <ClCompile Include="model\MengMeiUpperArm.cpp" />
+    <ClCompile Include="model\MengMeiUpperBody.cpp" />
+    <ClCompile Include="model\MengMeiView.cpp" />
     <ClCompile Include="model\model.cpp" />
     <ClCompile Include="model\modelController.cpp" />
-    <ClCompile Include="sample.cpp">
+    <ClCompile Include="main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -191,9 +197,13 @@
     <ClInclude Include="modelerui.h" />
     <ClInclude Include="modelerview.h" />
     <ClInclude Include="model\MengMei.h" />
+    <ClInclude Include="model\MengMeiHead.h" />
+    <ClInclude Include="model\MengMeiThroax.h" />
+    <ClInclude Include="model\MengMeiUpperArm.h" />
+    <ClInclude Include="model\MengMeiView.h" />
     <ClInclude Include="model\model.h" />
     <ClInclude Include="model\modelController.h" />
-    <ClInclude Include="model\modelUpperBody.h" />
+    <ClInclude Include="model\MengMeiUpperBody.h" />
     <ClInclude Include="vec.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -2,12 +2,12 @@
 #define MODEL_H
 
 #include "modelController.h"
+#include "../modelerdraw.h"
 #include <vector>
 
 class Model
 {
 public:
-	Model();
 
 	modelController* getController()
 	{

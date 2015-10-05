@@ -2,6 +2,7 @@
 #include <FL/gl.h>
 #include "modelController.h"
 
+#include <cstdio>
 
 void modelController::Control()
 {
