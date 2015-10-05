@@ -39,9 +39,6 @@
     <ClCompile Include="modelerview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sample.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="model\modelController.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
@@ -49,6 +46,24 @@
       <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="model\MengMei.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiThroax.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiUpperBody.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiView.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiUpperArm.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiHead.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -89,7 +104,19 @@
     <ClInclude Include="model\MengMei.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="model\modelUpperBody.h">
+    <ClInclude Include="model\MengMeiUpperBody.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiThroax.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiView.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiUpperArm.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiHead.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
