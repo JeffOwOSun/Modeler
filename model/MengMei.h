@@ -6,6 +6,7 @@
 
 #include "model.h"
 #include "MengMeiUpperBody.h"
+#include "MengMeiLowerBody.h"
 
 /**
  * \class This is the connection part between upper body and leg
@@ -19,8 +20,8 @@ public:
 
 private:
 	Model* m_UpperBody;
-	Model* m_LeftUpperLeg;
-	Model* m_RightUpperLeg;
+	Model* m_LeftLowerBody;
+	Model* m_RightLowerBody;
 };
 
 #endif
