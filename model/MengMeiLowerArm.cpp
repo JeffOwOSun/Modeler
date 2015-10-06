@@ -6,6 +6,7 @@ MengMeiLowerArm::MengMeiLowerArm()
 	m_hand = new MengMeiHand;
 	m_hand->getController()->setTransX(0.7f)->setTransY(-2.6f);
 	addChild(m_hand);
+	printf("add hand\n");
 }
 
 void MengMeiLowerArm::onDraw()

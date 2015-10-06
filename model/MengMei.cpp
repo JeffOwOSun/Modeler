@@ -7,14 +7,17 @@ MengMei::MengMei()
 
 	m_UpperBody = new MengMeiUpperBody;
 	addChild(m_UpperBody);
+	printf("add upper body\n");
 
 	m_LeftLowerBody = new MengMeiLowerBody;
 	m_LeftLowerBody->getController()->setTransX(1.2f)->setTransY(-1.4f);
 	addChild(m_LeftLowerBody);
+	printf("add left lower body\n");
 
 	m_RightLowerBody = new MengMeiLowerBody;
 	m_RightLowerBody->getController()->setTransX(-1.2f)->setTransY(-1.4f)->setRotateY(180);
 	addChild(m_RightLowerBody);
+	printf("add right lower body\n");
 }
 
 void MengMei::onDraw()

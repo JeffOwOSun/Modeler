@@ -5,6 +5,7 @@ MengMeiUpperLeg::MengMeiUpperLeg()
 	m_knee = new MengMeiKnee;
 	m_knee->getController()->setTransX(0.6f)->setTransY(-3.0f);
 	addChild(m_knee);
+	printf("add knee\n");
 }
 
 void MengMeiUpperLeg::onDraw()

@@ -7,6 +7,7 @@ MengMeiUpperArm::MengMeiUpperArm()
 	m_elbow = new MengMeiElbow;
 	m_elbow->getController()->setTransX(2.1f)->setTransY(-1.8f);
 	addChild(m_elbow);
+	printf("add elbow\n");
 
 }
 

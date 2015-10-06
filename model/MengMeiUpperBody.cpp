@@ -7,6 +7,7 @@ MengMeiUpperBody::MengMeiUpperBody()
 	m_Throax = new MengMeiThroax;
 	m_Throax->getController()->setTransY(3.0f);
 	addChild(m_Throax);
+	printf("add throax\n");
 }
 
 void MengMeiUpperBody::onDraw()
