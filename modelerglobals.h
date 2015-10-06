@@ -10,7 +10,27 @@
 // of the controls from the user interface.
 enum SampleModelControls
 { 
-	XPOS, YPOS, ZPOS, HEIGHT, ROTATE, NUMCONTROLS
+	// First Lighting control, position and diffusion color
+	LIGHT0_X,
+	LIGHT0_Y,
+	LIGHT0_Z,
+	LIGHT0_R,
+	LIGHT0_G,
+	LIGHT0_B,
+	// Second Lighting control, position and diffusion color
+	LIGHT1_X,
+	LIGHT1_Y,
+	LIGHT1_Z,
+	LIGHT1_R,
+	LIGHT1_G,
+	LIGHT1_B,
+	// Modeler position control
+	XPOS, 
+	YPOS, 
+	ZPOS, 
+	HEIGHT, 
+	ROTATE, 
+	NUMCONTROLS
 };
 
 // Colors

@@ -3,6 +3,8 @@
 
 #include "../modelerdraw.h"
 #include "../modelerview.h"
+#include "../modelerglobals.h"
+#include "../modelerapp.h"
 
 #include "MengMei.h"
 
@@ -19,7 +21,10 @@ public:
 	 * \brief Override the draw() method of ModelerView to draw out our Mengmeizi
 	 * \remark Accomplished by calling MengMei's Draw();
 	 */
-	virtual void draw();
+	void draw();
+
+protected:
+	void onLighting();
 
 private:
 	MengMei m_MengMei;
