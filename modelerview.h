@@ -25,6 +25,10 @@ public:
     virtual void draw();
 
     Camera *m_camera;
+
+protected:
+	virtual void onLighting();
+
 };
 
 
