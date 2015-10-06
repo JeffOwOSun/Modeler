@@ -173,6 +173,9 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="model\MengMei.cpp" />
+    <ClCompile Include="model\MengMeiElbow.cpp" />
+    <ClCompile Include="model\MengMeiFoot.cpp" />
+    <ClCompile Include="model\MengMeiHand.cpp" />
     <ClCompile Include="model\MengMeiHead.cpp" />
     <ClCompile Include="model\MengMeiKnee.cpp" />
     <ClCompile Include="model\MengMeiLowerArm.cpp" />
@@ -202,6 +205,9 @@
     <ClInclude Include="modelerui.h" />
     <ClInclude Include="modelerview.h" />
     <ClInclude Include="model\MengMei.h" />
+    <ClInclude Include="model\MengMeiElbow.h" />
+    <ClInclude Include="model\MengMeiFoot.h" />
+    <ClInclude Include="model\MengMeiHand.h" />
     <ClInclude Include="model\MengMeiKnee.h" />
     <ClInclude Include="model\MengMeiLowerBody.h" />
     <ClInclude Include="model\MengMeiHead.h" />

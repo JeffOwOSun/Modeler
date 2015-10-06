@@ -3,8 +3,8 @@
 #define MENGMEI_THROAX_H
 
 #include "model.h"
-#include "MengMeiUpperArm.h";
-#include "MengMeiHead.h";
+#include "MengMeiUpperArm.h"
+#include "MengMeiHead.h"
 
 class MengMeiThroax : public Model
 {

@@ -2,6 +2,7 @@
 #define MENGMEI_LOWERLEG_H
 
 #include "model.h"
+#include "MengMeiFoot.h"
 
 class MengMeiLowerLeg : public Model
 {

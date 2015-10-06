@@ -3,7 +3,7 @@
 #define MENGMEI_UPPERARM_H
 
 #include "model.h"
-#include "MengMeiLowerArm.h"
+#include "MengMeiElbow.h"
 
 class MengMeiUpperArm : public Model
 {
@@ -12,7 +12,7 @@ public:
 	void onDraw();
 
 private:
-	Model* m_lowerArm;
+	Model* m_elbow;
 };
 
 

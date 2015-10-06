@@ -3,7 +3,9 @@
 
 MengMeiLowerLeg::MengMeiLowerLeg()
 {
-
+	m_foot = new MengMeiFoot;
+	m_foot->getController()->setTransY(-3.0f);
+	addChild(m_foot);
 }
 
 void MengMeiLowerLeg::onDraw()

@@ -81,6 +81,15 @@
     <ClCompile Include="model\MengMeiKnee.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="model\MengMeiElbow.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiHand.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiFoot.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h">
@@ -147,6 +156,15 @@
       <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="model\MengMeiKnee.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiElbow.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiFoot.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiHand.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
