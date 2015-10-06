@@ -3,7 +3,10 @@
 
 #include "modelController.h"
 #include "../modelerdraw.h"
+#include "../stb_image.h"
 #include <vector>
+#include <string>
+#include <iostream>
 
 class Model
 {
@@ -26,6 +29,8 @@ public:
 	 */
 	void Draw();
 
+	void drawTexture(std::string& fileName, GLuint& handle);
+
 	/**
 	 * \brief ABC, to be implemented at every sub-class
 	 */
@@ -35,6 +40,7 @@ public:
 private:
 	modelController m_controller;
 	std::vector<Model*> m_children;
+	
 };
 
 #endif

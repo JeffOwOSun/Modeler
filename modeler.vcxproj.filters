@@ -90,6 +90,9 @@
     <ClCompile Include="model\MengMeiFoot.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="stb_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="model\MengMeiHand.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

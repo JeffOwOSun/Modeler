@@ -10,6 +10,7 @@ public:
 	MengMeiLowerArm();
 	void onDraw();
 private:
+	GLuint m_texture;
 	Model* m_hand;
 };
 

@@ -4,6 +4,7 @@
 #include "model.h"
 #include "MengMeiThroax.h"
 
+
 /**
  * \class Serves as 
  */
@@ -13,6 +14,7 @@ public:
 	MengMeiUpperBody();
 	void onDraw();
 private:
+	GLuint m_texture;
 	Model* m_Throax;
 };
 
