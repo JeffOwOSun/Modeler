@@ -128,6 +128,7 @@
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -171,12 +172,29 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
-    <ClCompile Include="sample.cpp">
+    <ClCompile Include="model\MengMei.cpp" />
+    <ClCompile Include="model\MengMeiElbow.cpp" />
+    <ClCompile Include="model\MengMeiFoot.cpp" />
+    <ClCompile Include="model\MengMeiHand.cpp" />
+    <ClCompile Include="model\MengMeiHead.cpp" />
+    <ClCompile Include="model\MengMeiKnee.cpp" />
+    <ClCompile Include="model\MengMeiLowerArm.cpp" />
+    <ClCompile Include="model\MengMeiLowerBody.cpp" />
+    <ClCompile Include="model\MengMeiLowerLeg.cpp" />
+    <ClCompile Include="model\MengMeiThroax.cpp" />
+    <ClCompile Include="model\MengMeiUpperArm.cpp" />
+    <ClCompile Include="model\MengMeiUpperBody.cpp" />
+    <ClCompile Include="model\MengMeiUpperLeg.cpp" />
+    <ClCompile Include="model\MengMeiView.cpp" />
+    <ClCompile Include="model\model.cpp" />
+    <ClCompile Include="model\modelController.cpp" />
+    <ClCompile Include="main.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
@@ -187,6 +205,23 @@
     <ClInclude Include="modelerglobals.h" />
     <ClInclude Include="modelerui.h" />
     <ClInclude Include="modelerview.h" />
+    <ClInclude Include="model\MengMei.h" />
+    <ClInclude Include="model\MengMeiElbow.h" />
+    <ClInclude Include="model\MengMeiFoot.h" />
+    <ClInclude Include="model\MengMeiHand.h" />
+    <ClInclude Include="model\MengMeiKnee.h" />
+    <ClInclude Include="model\MengMeiLowerBody.h" />
+    <ClInclude Include="model\MengMeiHead.h" />
+    <ClInclude Include="model\MengMeiLowerArm.h" />
+    <ClInclude Include="model\MengMeiLowerLeg.h" />
+    <ClInclude Include="model\MengMeiThroax.h" />
+    <ClInclude Include="model\MengMeiUpperArm.h" />
+    <ClInclude Include="model\MengMeiUpperLeg.h" />
+    <ClInclude Include="model\MengMeiView.h" />
+    <ClInclude Include="model\model.h" />
+    <ClInclude Include="model\modelController.h" />
+    <ClInclude Include="model\MengMeiUpperBody.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="vec.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
