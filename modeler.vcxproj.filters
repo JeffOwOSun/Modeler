@@ -93,6 +93,9 @@
     <ClCompile Include="stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="model\MengMeiEye.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h">
@@ -172,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiEye.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

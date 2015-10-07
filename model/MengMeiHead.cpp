@@ -21,6 +21,21 @@
 #define point16 0.0f, 1.2f, 0.3f
 
 
+MengMeiHead::MengMeiHead()
+{
+	m_leftEye = new MengMeiEye;
+	m_leftEye->getController()->setTransX(0.3f)->setTransY(0.85f)->setTransZ(0.35f)
+		->setScaleY(1.2)->setRotateX(-90)->setRotateY(90);
+	addChild(m_leftEye);
+	printf("add left eye");
+
+	m_rightEye = new MengMeiEye;
+	m_rightEye->getController()->setTransX(-0.3f)->setTransY(0.85f)->setTransZ(0.35f)
+		->setScaleY(1.2)->setRotateX(-90)->setRotateY(90);
+	addChild(m_rightEye);
+	printf("add right eye");
+}
+
 void MengMeiHead::onDraw()
 {
 	//drawSphere(0.7f);
