@@ -179,8 +179,5 @@
     <ClInclude Include="InverseKinematics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ComponentTree.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
