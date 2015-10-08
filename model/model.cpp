@@ -34,7 +34,7 @@ void Model::drawTexture(std::string& fileName, GLuint& handle)
 	unsigned char* textureData = stbi_load(fileName.c_str(), &width, &height, &numComponent, 4);
 	if (textureData == NULL)
 	{
-		std::cerr << "MengMeiUpperBody:: loading texture failed" << std::endl;
+		std::cerr << "loading texture failed" << std::endl;
 	}
 
 	glGenTextures(1, &handle);
@@ -50,6 +50,53 @@ void Model::drawTexture(std::string& fileName, GLuint& handle)
 	glFlush();
 
 	stbi_image_free(textureData);
+}
+
+void Model::drawTorus(GLdouble r1, GLdouble r2)
+{
+	ModelerDrawState *mds = ModelerDrawState::Instance();
+	int divisions;
+	
+	_setupOpenGl();
+
+	switch (mds->m_quality)
+	{
+	case HIGH:
+		divisions = 32; break;
+	case MEDIUM:
+		divisions = 20; break;
+	case LOW:
+		divisions = 12; break;
+	case POOR:
+		divisions = 8; break;
+	}
+
+	if (mds->m_rayFile)
+	{
+		_dump_current_modelview();
+		fprintf(mds->m_rayFile,
+			"cone { bottom_radius=%f; top_radius=%f;\n", r1, r2);
+		_dump_current_material();
+		fprintf(mds->m_rayFile, "})\n");
+	}
+	else
+	{
+		divisions *= 6;
+
+		for (int i = 0; i < divisions; i++){
+			GLdouble curAngle = 3.1415926 * 2.0 / divisions * i;
+			GLdouble curOx, curOz;
+			curOx = r1 * cos(curAngle);
+			curOz = r1 * sin(curAngle);
+
+			glPushMatrix();
+			glTranslated(curOx, 0.0, curOz);
+			glRotated(-curAngle / 3.1415926*180.0, 0.0, 1.0, 0.0);
+			drawCylinder(3.1415926 * 2.0 / divisions * (r1 + r2)*1.02, r2, r2);
+			glPopMatrix();
+		}
+
+	}
 }
 
 Model::~Model()
