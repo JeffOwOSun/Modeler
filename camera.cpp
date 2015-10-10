@@ -185,11 +185,14 @@ void Camera::applyViewingTransform() {
 	lookAt(mPosition, mLookAt, mUpVector);
 }
 
-void Camera::lookAt(Vec3f mPosition, Vec3f mLookAt, Vec3f mUpVector)
+void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up)
 {
-	gluLookAt(mPosition[0], mPosition[1], mPosition[2],
+	/*gluLookAt(mPosition[0], mPosition[1], mPosition[2],
 				mLookAt[0],   mLookAt[1],   mLookAt[2],
-				mUpVector[0], mUpVector[1], mUpVector[2]);
+				mUpVector[0], mUpVector[1], mUpVector[2]);*/
+
+	Vec3f 
+
 }
 
 #pragma warning(pop)

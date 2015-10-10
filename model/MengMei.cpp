@@ -26,11 +26,10 @@ MengMei::MengMei() :Model("MengMei")
 
 					GeneralModel* leftLowerArm = new GeneralModel("LeftLowerArm", GeneralModel::CYLINDER_SHAPE);
 					leftLowerArm->setTexture(std::string("./res/MengMeiSkin.jpg"));
-					leftLowerArm->setParam(3.0f, 0.5f, 0.4f);
+					leftLowerArm->setParam(3.0f, 0.3f, 0.20f);
 						
-						GeneralModel* leftHand = new GeneralModel("LeftHand", GeneralModel::SPHERE_SHAPE);
-						leftHand->setParam(0.5f);
-						leftHand->getController()->setTransZ(3.0f);
+						Model* leftHand = new MengMeiHand();
+						leftHand->getController()->setTransZ(3.5f)->setRotateY(-90);
 
 					leftLowerArm->addChild(leftHand);
 				leftElbow->addChild(leftLowerArm);

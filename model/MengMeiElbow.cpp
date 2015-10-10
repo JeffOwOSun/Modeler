@@ -11,5 +11,5 @@ MengMeiElbow::MengMeiElbow()
 
 void MengMeiElbow::onDraw()
 {
-	drawSphere(0.6f);
+	//drawSphere(0.6f);
 }
