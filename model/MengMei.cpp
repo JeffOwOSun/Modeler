@@ -18,7 +18,7 @@ MengMei::MengMei() :Model("MengMei")
 			//--------------------------------
 			GeneralModel* leftUpperArm = new GeneralModel("LeftUpperArm", GeneralModel::CYLINDER_SHAPE);
 			leftUpperArm->setParam(2.7f, 0.6f, 0.5f);
-			leftUpperArm->getController()->setRotate(90, 180, 0);
+			leftUpperArm->getController()->setRotate(70, 180, 0);
 			
 				GeneralModel* leftElbow = new GeneralModel("LeftElbow", GeneralModel::SPHERE_SHAPE);
 				leftElbow->setParam(0.6f);
@@ -41,7 +41,7 @@ MengMei::MengMei() :Model("MengMei")
 			//--------------------------------
 			GeneralModel* rightUpperArm = new GeneralModel("RightUpperArm", GeneralModel::CYLINDER_SHAPE);
 			rightUpperArm->setParam(2.7f, 0.6f, 0.5f);
-			rightUpperArm->getController()->setRotate(-90, 180, 0);
+			rightUpperArm->getController()->setRotate(-70, 180, 0);
 
 				GeneralModel* rightElbow = new GeneralModel("RightElbow", GeneralModel::SPHERE_SHAPE);
 				rightElbow->setParam(0.6f);
@@ -59,7 +59,11 @@ MengMei::MengMei() :Model("MengMei")
 				rightElbow->addChild(rightLowerArm);
 			rightUpperArm->addChild(rightElbow);
 
+			//---------------------------------
+			//Head
+			//---------------------------------
 			Model* head = new MengMeiHead();
+			head->getController()->setRotate(90, 0, -90)->setTransZ(0.5f);
 
 		thorax->addChild(leftUpperArm);
 		thorax->addChild(rightUpperArm);
@@ -75,20 +79,20 @@ MengMei::MengMei() :Model("MengMei")
 	leftLowerBody->getController()->setTransX(1.2f)->setTransY(-1.4f)->setRotate(60,90,0);
 	
 		GeneralModel* leftUpperLeg = new GeneralModel("LeftUpperLeg", GeneralModel::CYLINDER_SHAPE);
-		leftUpperLeg->setParam(2.7f, 0.6f, 0.5f);
+		leftUpperLeg->setParam(3.5f, 0.6f, 0.5f);
 		leftUpperLeg->getController()->setRotateX(32);
 		
 			GeneralModel* leftKnee = new GeneralModel("LeftKnee", GeneralModel::SPHERE_SHAPE);
 			leftKnee->setParam(0.5f);
-			leftKnee->getController()->setTransZ(2.7f);
+			leftKnee->getController()->setTransZ(3.5f);
 			
 				GeneralModel* leftLowerLeg = new GeneralModel("LeftLowerLeg", GeneralModel::CYLINDER_SHAPE);
-				leftLowerLeg->setParam(2.7f, 0.5f, 0.4f);
+				leftLowerLeg->setParam(4.0f, 0.5f, 0.4f);
 				leftKnee->getController()->setRotateY(80);
 				
 					GeneralModel* leftFoot = new GeneralModel("LeftFoot", GeneralModel::SPHERE_SHAPE);
 					leftFoot->setParam(0.4f);
-					leftFoot->getController()->setTransZ(2.7f);
+					leftFoot->getController()->setTransZ(4.0f);
 
 				leftLowerLeg->addChild(leftFoot);
 
@@ -107,20 +111,20 @@ MengMei::MengMei() :Model("MengMei")
 	rightLowerBody->getController()->setTransX(-1.2f)->setTransY(-1.4f)->setRotate(120, 90, 0);
 	
 		GeneralModel* rightUpperLeg = new GeneralModel("RightUpperLeg", GeneralModel::CYLINDER_SHAPE);
-		rightUpperLeg->setParam(2.7f, 0.6f, 0.5f);
+		rightUpperLeg->setParam(3.5f, 0.6f, 0.5f);
 		rightUpperLeg->getController()->setRotateX(-32);
 		
 			GeneralModel* rightKnee = new GeneralModel("RightKnee", GeneralModel::SPHERE_SHAPE);
 			rightKnee->setParam(0.5f);
-			rightKnee->getController()->setTransZ(2.7f);
+			rightKnee->getController()->setTransZ(3.5f);
 
 				GeneralModel* rightLowerLeg = new GeneralModel("RightLowerLeg", GeneralModel::CYLINDER_SHAPE);
-				rightLowerLeg->setParam(2.7f, 0.5f, 0.4f);
+				rightLowerLeg->setParam(4.0f, 0.5f, 0.4f);
 				rightKnee->getController()->setRotateY(10);
 
 					GeneralModel* rightFoot = new GeneralModel("RightFoot", GeneralModel::SPHERE_SHAPE);
 					rightFoot->setParam(0.4f);
-					rightFoot->getController()->setTransZ(2.7f);
+					rightFoot->getController()->setTransZ(4.0f);
 
 				rightLowerLeg->addChild(rightFoot);
 
