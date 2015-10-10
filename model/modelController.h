@@ -1,19 +1,18 @@
 /**
 * This file serves as controller for model
+* Handles the incremental transformation of the coordinate system between models
 */
 
 #ifndef MODEL_CONTROLLER_H
 #define MODEL_CONTROLLER_H
 
+#include"..\mat.h"
+
 class modelController
 {
 public:
-	modelController()
-	{
-		trans = { 0, 0, 0 };
-		scale = { 1, 1, 1 };
-		rotate = { 0, 0, 0 };
-	}
+	modelController() : trans({ 0, 0, 0 }), rotate({ 0, 0, 0 })
+	{}
 
 	void Control();
 
@@ -35,21 +34,11 @@ public:
 		return this;
 	}
 
-	modelController* setScaleX(const float x)
+	modelController* setTrans(const float x, const float y, const float z)
 	{
-		scale.x = x;
-		return this;
-	}
-
-	modelController* setScaleY(const float y)
-	{
-		scale.y = y;
-		return this;
-	}
-
-	modelController* setScaleZ(const float z)
-	{
-		scale.z = z;
+		trans.x = x;
+		trans.y = y;
+		trans.z = z;
 		return this;
 	}
 
@@ -76,14 +65,20 @@ public:
 		return trans.x;
 	}
 
+	modelController* setRotate(const float x, const float y, const float z)
+	{
+		rotate.x = x;
+		rotate.y = y;
+		rotate.z = z;
+		return this;
+	}
+
+	Mat4f getMatrix();
+
 private:
 	struct {
 		float x, y, z;
 	} trans;
-
-	struct {
-		float x, y, z;
-	} scale;
 
 	struct {
 		float x, y, z;

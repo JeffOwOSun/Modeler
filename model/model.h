@@ -4,13 +4,15 @@
 #include "modelController.h"
 #include "../modelerdraw.h"
 #include "../stb_image.h"
+#include <map>
 #include <vector>
 #include <string>
 #include <iostream>
-
+#include "..\vec.h"
 class Model
 {
 public:
+	Model(std::string name = "", Model* parent = NULL);
 
 	modelController* getController()
 	{
@@ -23,6 +25,13 @@ public:
 	 * \brief Get a pointer to children model
 	 */
 	Model* getChild(const int pos);
+
+	//get the parent model
+	Model* getParent() { return m_parent; }
+	void setParent(Model* parent) { m_parent = parent; }
+
+	//get the origin of this Object Coordinate Space
+	Vec3f getOrigin();
 
 	/**
 	 * \brief Call controller, be called by modelView
@@ -44,9 +53,15 @@ public:
 	virtual void onDraw() = 0;
 	
 	virtual ~Model();
+
+	//The static map of models
+	static std::map < std::string, Model* > m_modelList;
 private:
+	
 	modelController m_controller;
 	std::vector<Model*> m_children;
+	std::string m_name;
+	Model* m_parent;
 	
 };
 
