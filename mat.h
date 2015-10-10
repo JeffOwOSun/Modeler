@@ -252,6 +252,8 @@ public:
 	template <class U> friend Mat4<U> operator *( const Mat4<U>& a, const double d );
 	template <class U> friend Mat4<U> operator *( const double d, const Mat4<U>& a );
 	template <class U> friend Vec3<U> operator *( const Mat4<U>& a, const Vec3<U>& b );
+	template <class U> friend Vec4<U> operator *(const Mat4<U>& a, const Vec4<U>& v);
+	template <class U> friend Vec4<U> operator *(const Vec4<U>& v, const Mat4<U>& a);
 	template <class U> friend Mat4<U> operator /( const Mat4<U>& a, const double d );
 	template <class U> friend bool operator ==( const Mat4<U>& a, const Mat4<U>& b );
 	template <class U> friend bool operator !=( const Mat4<U>& a, const Mat4<U>& b );
