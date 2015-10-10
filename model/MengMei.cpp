@@ -3,6 +3,7 @@
 
 MengMei::MengMei() :Model("MengMei")
 {
+	this->getController()->setTransY(6.5f);
 
 	GeneralModel* upperBody = new GeneralModel("UpperBody", GeneralModel::CYLINDER_SHAPE);
 	upperBody->setTexture("./res/MengMeiBody.jpg");
@@ -121,8 +122,10 @@ MengMei::MengMei() :Model("MengMei")
 				rightLowerLeg->setParam(4.0f, 0.5f, 0.4f);
 				rightKnee->getController()->setRotateY(10);
 
-					GeneralModel* rightFoot = new GeneralModel("RightFoot", GeneralModel::SPHERE_SHAPE);
+					/*GeneralModel* rightFoot = new GeneralModel("RightFoot", GeneralModel::SPHERE_SHAPE);
 					rightFoot->setParam(0.4f);
+					rightFoot->getController()->setTransZ(4.0f);*/
+					Model* rightFoot = new MengMeiFoot();
 					rightFoot->getController()->setTransZ(4.0f);
 
 				rightLowerLeg->addChild(rightFoot);

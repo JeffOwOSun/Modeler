@@ -94,7 +94,6 @@ void Camera::calculateViewingTransformParameters()
 
 	if (fmod((double)mElevation, 2.0*M_PI) < 3 * M_PI / 2 && fmod((double)mElevation, 2.0*M_PI) > M_PI / 2)
 	{
-		printf("a");
 		mUpVector = Vec3f(sin(mTwist), -cos(mTwist), 0);
 	}
 	else
