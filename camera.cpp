@@ -178,7 +178,16 @@ void Camera::applyViewingTransform() {
 
 	// Place the camera at mPosition, aim the camera at
 	// mLookAt, and twist the camera such that mUpVector is up
-	gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
+	//gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
+	//			mLookAt[0],   mLookAt[1],   mLookAt[2],
+	//			mUpVector[0], mUpVector[1], mUpVector[2]);
+
+	lookAt(mPosition, mLookAt, mUpVector);
+}
+
+void Camera::lookAt(Vec3f mPosition, Vec3f mLookAt, Vec3f mUpVector)
+{
+	gluLookAt(mPosition[0], mPosition[1], mPosition[2],
 				mLookAt[0],   mLookAt[1],   mLookAt[2],
 				mUpVector[0], mUpVector[1], mUpVector[2]);
 }

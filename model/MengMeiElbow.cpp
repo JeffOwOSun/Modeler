@@ -4,7 +4,7 @@
 MengMeiElbow::MengMeiElbow()
 {
 	m_lowerArm = new MengMeiLowerArm;
-	m_lowerArm->getController()->setTransY(-0.3f);
+	//m_lowerArm->getController()->setTransY(-0.3f);
 	addChild(m_lowerArm);
 	printf("add lower arm\n");
 }
