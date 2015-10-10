@@ -22,7 +22,7 @@ int main()
 	// Constructor is ModelerControl(name, minimumvalue, maximumvalue, 
 	// stepsize, defaultvalue)
     ModelerControl controls[NUMCONTROLS];
-	controls[LIGHT0_X] = ModelerControl("Light0 X", -5, 5, 0.1, -1.3f);
+	controls[LIGHT0_X] = ModelerControl("Light0 X", -5, 5, 0.1, -5.0f);
 	controls[LIGHT0_Y] = ModelerControl("Light0 Y", -5, 5, 0.1, -2.0);
 	controls[LIGHT0_Z] = ModelerControl("Light0 Z", -5, 5, 0.1, -4.0);
 	controls[LIGHT0_R] = ModelerControl("Light0 R", 0.0f, 1.0f, 0.1f, 1.0f);

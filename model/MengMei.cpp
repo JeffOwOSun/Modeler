@@ -3,6 +3,8 @@
 
 MengMei::MengMei() :Model("MengMei")
 {
+	this->getController()->setTransY(6.0f);
+
 	GeneralModel* upperBody = new GeneralModel("UpperBody", GeneralModel::CYLINDER_SHAPE);
 	upperBody->setTexture("./res/MengMeiBody.jpg");
 	upperBody->setParam(3.0f, 0.5f, 0.75f);
@@ -20,7 +22,7 @@ MengMei::MengMei() :Model("MengMei")
 			leftUpperArm->getController()->setRotate(70, 180, 0);
 			
 				GeneralModel* leftElbow = new GeneralModel("LeftElbow", GeneralModel::SPHERE_SHAPE);
-				leftElbow->setParam(0.6f);
+				leftElbow->setParam(0.1f);
 				leftElbow->getController()->setTransZ(2.7f);
 
 					GeneralModel* leftLowerArm = new GeneralModel("LeftLowerArm", GeneralModel::CYLINDER_SHAPE);
@@ -115,10 +117,12 @@ MengMei::MengMei() :Model("MengMei")
 			GeneralModel* rightKnee = new GeneralModel("RightKnee", GeneralModel::SPHERE_SHAPE);
 			rightKnee->setParam(0.5f);
 			rightKnee->getController()->setTransZ(3.5f);
+			rightKnee->getController()->setRotateY(10);
 
-				GeneralModel* rightLowerLeg = new GeneralModel("RightLowerLeg", GeneralModel::CYLINDER_SHAPE);
-				rightLowerLeg->setParam(4.0f, 0.5f, 0.4f);
-				rightKnee->getController()->setRotateY(10);
+				/*GeneralModel* rightLowerLeg = new GeneralModel("RightLowerLeg", GeneralModel::CYLINDER_SHAPE);
+				rightLowerLeg->setParam(4.0f, 0.5f, 0.4f);*/
+				Model* rightLowerLeg = new MengMeiLowerLeg();
+				
 
 					/*GeneralModel* rightFoot = new GeneralModel("RightFoot", GeneralModel::SPHERE_SHAPE);
 					rightFoot->setParam(0.4f);

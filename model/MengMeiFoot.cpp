@@ -22,62 +22,62 @@
 #define FTP17 0.6f, -0.5f, -0.8f
 #define FTP18 0.0f, -0.7f, -0.8f
 
-#define FTP19 -0.55f, -0.45f, -0.5f
-#define FTP20 -0.55f, 0.45f, -0.5f
-#define FTP21 0.0f, 0.65f, -0.5f
-#define FTP22 0.55f, 0.45f, -0.5f
-#define FTP23 0.55f, -0.45f, -0.5f
-#define FTP24 0.0f, -0.65f, -0.5f
+#define FTP19 -0.5f, -0.4f, -0.5f
+#define FTP20 -0.5f, 0.4f, -0.5f
+#define FTP21 0.0f, 0.6f, -0.5f
+#define FTP22 0.5f, 0.4f, -0.5f
+#define FTP23 0.5f, -0.4f, -0.5f
+#define FTP24 0.0f, -0.6f, -0.5f
 
-#define FTP25 -0.83f, -0.63f, -0.49f
-#define FTP26 -0.97f, 0.0f, -0.51f
-#define FTP27 -0.83f, 0.63f, -0.48f
-#define FTP28 0.0f, 0.83f, -0.52f
-#define FTP29 0.83f, 0.63f, -0.5f
-#define FTP30 0.97f, 0.0f, -0.48f
-#define FTP31 0.83f, -0.63f, -0.5f
-#define FTP32 0.0f, -0.83f, -0.51f
+#define FTP25 -0.78f, -0.58f, -0.49f
+#define FTP26 -0.92f, 0.0f, -0.51f
+#define FTP27 -0.78f, 0.58f, -0.48f
+#define FTP28 0.0f, 0.78f, -0.52f
+#define FTP29 0.78f, 0.58f, -0.5f
+#define FTP30 0.92f, 0.0f, -0.48f
+#define FTP31 0.78f, -0.58f, -0.5f
+#define FTP32 0.0f, -0.78f, -0.51f
 
-#define FTP33 -0.78f, -0.58f, 0.35f
-#define FTP34 -0.92f, 0.0f, 0.35f
-#define FTP35 -0.78f, 0.58f, 0.35f
-#define FTP36 0.0f, 0.78f, 0.35f
-#define FTP37 0.78f, 0.58f, 0.35f
-#define FTP38 0.92f, 0.0f, 0.35f
-#define FTP39 0.78f, -0.58f, 0.35f
-#define FTP40 0.0f, -0.78f, 0.35f
+#define FTP33 -0.73f, -0.53f, 0.35f
+#define FTP34 -0.87f, 0.0f, 0.35f
+#define FTP35 -0.73f, 0.53f, 0.35f
+#define FTP36 0.0f, 0.73f, 0.35f
+#define FTP37 0.73f, 0.53f, 0.35f
+#define FTP38 0.87f, 0.0f, 0.35f
+#define FTP39 0.73f, -0.53f, 0.35f
+#define FTP40 0.0f, -0.73f, 0.35f
 
-#define FTP41 -0.78f, -0.58f, 1.0f
-#define FTP42 -0.92f, 0.0f, 1.0f
-#define FTP43 -0.63f, 0.7f, 1.0f
-#define FTP44 0.0f, 0.8f, 1.0f
-#define FTP45 0.78f, 0.7f, 1.0f
-#define FTP46 0.97f, 0.0f, 1.0f
-#define FTP47 0.78f, -0.7f, 1.0f
-#define FTP48 0.0f, -0.8f, 1.0f
+#define FTP41 -0.73f, -0.53f, 1.0f
+#define FTP42 -0.87f, 0.0f, 1.0f
+#define FTP43 -0.58f, 0.65f, 1.0f
+#define FTP44 0.0f, 0.75f, 1.0f
+#define FTP45 0.73f, 0.65f, 1.0f
+#define FTP46 0.92f, 0.0f, 1.0f
+#define FTP47 0.73f, -0.65f, 1.0f
+#define FTP48 0.0f, -0.75f, 1.0f
 
 #define FTP49 -2.1f, 0.0f, 0.2f
 
-#define FTP51 -1.8f, -0.9f, 0.45f
-#define FTP52 -2.5f, -0.55f, 0.52f
-#define FTP53 -2.8f, 0.0f, 0.55f
-#define FTP54 -2.5f, 0.55f, 0.52f
-#define FTP55 -1.8f, 0.8f, 0.45f
+#define FTP51 -1.75f, -0.85f, 0.45f
+#define FTP52 -2.45f, -0.5f, 0.52f
+#define FTP53 -2.75f, 0.0f, 0.55f
+#define FTP54 -2.45f, 0.5f, 0.52f
+#define FTP55 -1.75f, 0.75f, 0.45f
 
-#define FTP61 -0.78f, -0.58f, 1.5f
-#define FTP62 -0.92f, 0.0f, 1.5f
-#define FTP63 -0.63f, 0.7f, 1.5f
-#define FTP64 0.0f, 0.8f, 1.5f
-#define FTP65 0.78f, 0.7f, 1.5f
-#define FTP66 0.97f, 0.0f, 1.5f
-#define FTP67 0.78f, -0.7f, 1.5f
-#define FTP68 0.0f, -0.8f, 1.5f
+#define FTP61 -0.73f, -0.53f, 1.5f
+#define FTP62 -0.87f, 0.0f, 1.5f
+#define FTP63 -0.58f, 0.65f, 1.5f
+#define FTP64 0.0f, 0.75f, 1.5f
+#define FTP65 0.73f, 0.65f, 1.5f
+#define FTP66 0.92f, 0.0f, 1.5f
+#define FTP67 0.73f, -0.65f, 1.5f
+#define FTP68 0.0f, -0.75f, 1.5f
 
-#define FTP71 -1.9f, -0.99f, 1.5f
-#define FTP72 -2.6f, -0.65f, 1.5f
-#define FTP73 -2.9f, 0.0f, 1.5f
-#define FTP74 -2.6f, 0.65f, 1.5f
-#define FTP75 -1.9f, 0.9f, 1.5f
+#define FTP71 -1.85f, -0.89f, 1.5f
+#define FTP72 -2.55f, -0.6f, 1.5f
+#define FTP73 -2.85f, 0.0f, 1.5f
+#define FTP74 -2.55f, 0.6f, 1.5f
+#define FTP75 -1.85f, 0.85f, 1.5f
 
 void MengMeiFoot::onDraw()
 {
