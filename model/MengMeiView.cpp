@@ -6,8 +6,33 @@
 void MengMeiView::draw()
 {
 	ModelerView::draw();
+	
+#ifdef _DEBUG
+	//Draw the axis
 	setAmbientColor(0.1f, 0.1f, 0.1f);
+	glPushMatrix();
+	setAmbientColor(.1f, .1f, .1f);
+	setDiffuseColor(COLOR_RED);
+	drawBox(100, .1f, .1f);
+	glPopMatrix(); 
+	
+	glPushMatrix();
+	setAmbientColor(.1f, .1f, .1f);
+	setDiffuseColor(COLOR_GREEN);
+	drawBox(.1f, 100, .1f);
+	glPopMatrix();
+	
+	glPushMatrix();
+	setAmbientColor(.1f, .1f, .1f);
+	setDiffuseColor(COLOR_BLUE);
+	drawBox(.1f, .1f, 100);
+	glPopMatrix();
+
+	setAmbientColor(.1f, .1f, .1f);
+	setDiffuseColor(1.0f, 1.0f, 1.0f);
+#endif
 	m_MengMei.Draw();
+	
 }
 
 void MengMeiView::onLighting()

@@ -172,6 +172,8 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="model\feedbackModel.cpp" />
+    <ClCompile Include="model\generalModel.cpp" />
     <ClCompile Include="model\MengMei.cpp" />
     <ClCompile Include="model\MengMeiElbow.cpp" />
     <ClCompile Include="model\MengMeiEye.cpp" />
@@ -196,16 +198,19 @@
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <ClCompile Include="stb_image.cpp" />
+    <ClCompile Include="InverseKinematics.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="InverseKinematics.h" />
     <ClInclude Include="mat.h" />
     <ClInclude Include="modelerapp.h" />
     <ClInclude Include="modelerdraw.h" />
     <ClInclude Include="modelerglobals.h" />
     <ClInclude Include="modelerui.h" />
     <ClInclude Include="modelerview.h" />
+    <ClInclude Include="model\feedbackModel.h" />
     <ClInclude Include="model\MengMei.h" />
     <ClInclude Include="model\MengMeiElbow.h" />
     <ClInclude Include="model\MengMeiEye.h" />
@@ -223,6 +228,7 @@
     <ClInclude Include="model\model.h" />
     <ClInclude Include="model\modelController.h" />
     <ClInclude Include="model\MengMeiUpperBody.h" />
+    <ClInclude Include="model\generalModel.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="vec.h" />
   </ItemGroup>
