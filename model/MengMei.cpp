@@ -3,8 +3,6 @@
 
 MengMei::MengMei() :Model("MengMei")
 {
-	this->getController()->setTransY(6.5f);
-
 	GeneralModel* upperBody = new GeneralModel("UpperBody", GeneralModel::CYLINDER_SHAPE);
 	upperBody->setTexture("./res/MengMeiBody.jpg");
 	upperBody->setParam(3.0f, 0.5f, 0.75f);
