@@ -5,6 +5,7 @@
 #include "../modelerdraw.h"
 
 #include "model.h"
+#include "generalModel.h"
 #include "MengMeiUpperBody.h"
 #include "MengMeiLowerBody.h"
 
@@ -17,11 +18,6 @@ class MengMei : public Model
 public:
 	MengMei();
 	void onDraw();
-
-private:
-	Model* m_UpperBody;
-	Model* m_LeftLowerBody;
-	Model* m_RightLowerBody;
 };
 
 #endif
