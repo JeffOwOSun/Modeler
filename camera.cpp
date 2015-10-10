@@ -187,12 +187,27 @@ void Camera::applyViewingTransform() {
 
 void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up)
 {
-	/*gluLookAt(mPosition[0], mPosition[1], mPosition[2],
-				mLookAt[0],   mLookAt[1],   mLookAt[2],
-				mUpVector[0], mUpVector[1], mUpVector[2]);*/
-
-	Vec3f 
-
+	// Clarify: 
+	// eye is the position of camera
+	// at is any poitn you look at
+	// up is the up vector
+	// The computation process follows exactly as CGPP (Section 13.4) describes
+	Vec3f w = eye - at;
+	w.normalize();
+	Vec3f v = up - (up * w) * w;
+	v.normalize();
+	Vec3f u = v ^ w;
+	u.normalize();
+	
+	float m[16] = {
+		u[0], v[0], w[0], 0.0,
+		u[1], v[1], w[1], 0.0,
+		u[2], v[2], w[2], 0.0,
+		0.0, 0.0, 0.0, 1.0
+	};
+	
+	glMultMatrixf(m);
+	glTranslatef(-eye[0], -eye[1], -eye[2]);
 }
 
 #pragma warning(pop)
