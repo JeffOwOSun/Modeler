@@ -316,7 +316,7 @@ ModelerUserInterface::ModelerUserInterface() {
     }
     o->end();
   }
-  { Fl_Window* o = m_modelerWindow = new Fl_Window(340, 296, "Model");
+  { Fl_Window* o = m_modelerWindow = new Fl_Window(700, 600, "Model");
     w = o;
     o->callback((Fl_Callback*)cb_m_modelerWindow, (void*)(this));
     o->when(FL_WHEN_NEVER);

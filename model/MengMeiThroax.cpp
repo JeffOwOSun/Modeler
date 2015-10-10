@@ -14,7 +14,7 @@ MengMeiThroax::MengMeiThroax()
 	printf("add right upper arm\n");
 
 	m_Head = new MengMeiHead;
-	m_Head->getController()->setTransY(0.9f);
+	m_Head->getController()->setTransY(0.7f);
 	addChild(m_Head);
 	printf("add head\n");
 }

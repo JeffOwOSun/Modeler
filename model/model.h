@@ -29,7 +29,14 @@ public:
 	 */
 	void Draw();
 
+	/**
+	 * \brief This function is to cover texture into object
+	 * \param fileName JPG file name to be textured
+	 * \param handle associated GLuint name in that class
+	 */
 	void drawTexture(std::string& fileName, GLuint& handle);
+
+	void drawTorus(GLdouble r1, GLdouble r2);
 
 	/**
 	 * \brief ABC, to be implemented at every sub-class

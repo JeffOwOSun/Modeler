@@ -71,6 +71,11 @@ public:
 		return this;
 	}
 
+	float getTransX()
+	{
+		return trans.x;
+	}
+
 private:
 	struct {
 		float x, y, z;
