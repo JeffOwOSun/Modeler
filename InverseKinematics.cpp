@@ -11,46 +11,27 @@ using namespace std;
 void IK::IKOneStep(vector<double>& parameters, IKpredicate metric) {
 	//Calculate the derivative using numerical method
 	//Modify the parameters
-		
-	const double origMetric = metric(parameters);
-
+	vector<double> gradient;
+	//calculate gradient
 	for (int i = 0; i < parameters.size(); ++i) {
+		//backup parameter i
 		double x = parameters[i];
 		parameters[i] = x + delta;
+		double plusMetric = metric(parameters);
+		parameters[i] = x - delta;
+		double minusMetric = metric(parameters);
+		//restore parameter i
+		parameters[i] = x;
 		//calculate
-		double deltaY = metric(parameters) - origMetric;
-		double derivative = deltaY / delta;
-		//TODO: use momentum
-		parameters[i] = x - derivative;
+		double deltaY = plusMetric - minusMetric;
+		double derivative = deltaY / (2 * delta);
+		gradient.push_back(derivative);
 	}
-}
-
-double IK::sampleMetric(const vector<double>& parameters) {
-	/**
-		* Required mode
-		* parameters = {
-		* XPOS,
-		* YPOS,
-		* ZPOS,
-		* HEIGHT,
-		* ROTATE
-		*/
-
-	//Do a strict check of number of parameters, for now
-	if (parameters.size() != 5)
-		throw(exception("In method sampleMetric: number of parameters mismatch"));
-
-	//the position of target
-	const vector<double> target({ 10, 10, 10 });
-
-	//calculate the metric
-	/**TODO: here the problem is, although the access to parametric variables is not given to our
-	 * sample Metric, we assume it knows the structure of the robot, and can imply the coordinates
-	 * based on the mere parameters passed in.
-	 *
-	 * This is not a quite natural way to implement it.
-	 * 
-	 * One way I could think about, is to build a manager of the model, which can compute the
-	 * coordinate of the handle with given parameters.
-	 */
+	//normalize gradient
+	double length = 0;
+	for (double x : gradient) length = pow(x, 2);
+	length = sqrt(length);
+	for (double& x : gradient) x = x / length * learningRate;
+	//subtract the gradient from parameters
+	for (int i = 0; i < parameters.size(); ++i) parameters[i] -= gradient[i];
 }

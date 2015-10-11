@@ -8,6 +8,7 @@ namespace IK {
 	 * The delta value signifying an increment.
 	 */
 	const double delta = 0.001;
+	const double learningRate = 1;
 
 	/**
 	* Function that maps a vector of parameters to a double metric
@@ -25,11 +26,6 @@ namespace IK {
 	* This function only calculates one step of the IKOptimize iterations.
 	*/
 	extern void IKOneStep(std::vector<double>& parameters, IKpredicate metric);
-
-	/**
-	* The sample metric function based on sample model of the tank
-	*/
-	extern double sampleMetric(const std::vector<double>& parameters);
 }
 
 #endif //INVERSE_KINEMATICS_H

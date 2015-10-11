@@ -28,6 +28,7 @@ protected:
 
 private:
 	MengMei m_MengMei;
+	bool IKLastState = false;
 };
 
 #endif
