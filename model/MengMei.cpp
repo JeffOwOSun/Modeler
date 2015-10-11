@@ -1,5 +1,9 @@
 
 #include "MengMei.h"
+#include "MengMeiHand.h"
+#include "MengMeiHead.h"
+#include "MengMeiLowerLeg.h"
+#include "MengMeiFoot.h"
 
 MengMei::MengMei() :Model("MengMei")
 {

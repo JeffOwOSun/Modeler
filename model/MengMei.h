@@ -7,8 +7,6 @@
 
 #include "model.h"
 #include "generalModel.h"
-#include "MengMeiUpperBody.h"
-#include "MengMeiLowerBody.h"
 
 /**
  * \class This is the connection part between upper body and leg
