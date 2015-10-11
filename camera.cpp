@@ -15,6 +15,7 @@ const float kMouseRotationSensitivity		= 1.0f/90.0f;
 const float kMouseTranslationXSensitivity	= 0.03f;
 const float kMouseTranslationYSensitivity	= 0.03f;
 const float kMouseZoomSensitivity			= 0.08f;
+const float kMouseTwistSensitivity			= 0.004f;
 
 void MakeDiagonal(Mat4f &m, float k)
 {
@@ -84,17 +85,19 @@ void Camera::calculateViewingTransformParameters()
 	MakeHTrans(dollyXform, Vec3f(0,0,mDolly));
 	MakeHRotY(azimXform, mAzimuth);
 	MakeHRotX(elevXform, mElevation);
-	MakeDiagonal(twistXform, 1.0f);
+	MakeDiagonal(twistXform, mTwist);
 	MakeHTrans(originXform, mLookAt);
 	
 	mPosition = Vec3f(0,0,0);
 	// grouped for (mat4 * vec3) ops instead of (mat4 * mat4) ops
 	mPosition = originXform * (azimXform * (elevXform * (dollyXform * mPosition)));
 
-	if ( fmod((double)mElevation, 2.0*M_PI) < 3*M_PI/2 && fmod((double)mElevation, 2.0*M_PI) > M_PI/2 )
-		mUpVector= Vec3f(0,-1,0);
+	if (fmod((double)mElevation, 2.0*M_PI) < 3 * M_PI / 2 && fmod((double)mElevation, 2.0*M_PI) > M_PI / 2)
+	{
+		mUpVector = Vec3f(sin(mTwist), -cos(mTwist), 0);
+	}
 	else
-		mUpVector= Vec3f(0,1,0);
+		mUpVector= Vec3f(sin(mTwist), cos(mTwist), 0);
 
 	mDirtyTransform = false;
 }
@@ -159,7 +162,11 @@ void Camera::dragMouse( int x, int y )
 			break;
 		}
 	case kActionTwist:
-		// Not implemented
+		{
+			float dTwist = -mouseDelta[0] * kMouseTwistSensitivity;
+			setTwist(getTwist() + dTwist);
+			break;
+		}
 	default:
 		break;
 	}
@@ -178,9 +185,36 @@ void Camera::applyViewingTransform() {
 
 	// Place the camera at mPosition, aim the camera at
 	// mLookAt, and twist the camera such that mUpVector is up
-	gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
-				mLookAt[0],   mLookAt[1],   mLookAt[2],
-				mUpVector[0], mUpVector[1], mUpVector[2]);
+	//gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
+	//			mLookAt[0],   mLookAt[1],   mLookAt[2],
+	//			mUpVector[0], mUpVector[1], mUpVector[2]);
+
+	lookAt(mPosition, mLookAt, mUpVector);
+}
+
+void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up)
+{
+	// Clarify: 
+	// eye is the position of camera
+	// at is any poitn you look at
+	// up is the up vector
+	// The computation process follows exactly as CGPP (Section 13.4) describes
+	Vec3f w = eye - at;
+	w.normalize();
+	Vec3f v = up - (up * w) * w;
+	v.normalize();
+	Vec3f u = v ^ w;
+	u.normalize();
+	
+	float m[16] = {
+		u[0], v[0], w[0], 0.0,
+		u[1], v[1], w[1], 0.0,
+		u[2], v[2], w[2], 0.0,
+		0.0, 0.0, 0.0, 1.0
+	};
+	
+	glMultMatrixf(m);
+	glTranslatef(-eye[0], -eye[1], -eye[2]);
 }
 
 #pragma warning(pop)

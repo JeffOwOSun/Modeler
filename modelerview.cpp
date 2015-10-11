@@ -44,6 +44,10 @@ int ModelerView::handle(int event)
 				m_camera->clickMouse(kActionZoom, eventCoordX, eventCoordY );
 				break;
 			}
+			if (Fl::event_ctrl())
+			{
+				m_camera->clickMouse(kActionTwist, eventCoordX, eventCoordY);
+			}
            // printf("push %d %d\n", eventCoordX, eventCoordY);
 		}
 		break;
