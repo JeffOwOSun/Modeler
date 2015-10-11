@@ -12,7 +12,7 @@
 class Model
 {
 public:
-	Model(std::string name = "", Model* parent = NULL);
+	Model(ModelNames name, Model* parent = NULL);
 
 	modelController* getController()
 	{
@@ -38,6 +38,8 @@ public:
 	 */
 	void Draw();
 
+	void refreshParameters();
+
 	/**
 	 * \brief This function is to cover texture into object
 	 * \param fileName JPG file name to be textured
@@ -55,7 +57,7 @@ public:
 	virtual ~Model();
 
 	//The static map of models
-	static std::map < std::string, Model* > m_modelList;
+	static std::map < ModelNames, Model* > m_modelList;
 
 	//function pointer, callback before draw to update necessary informations;
 	typedef void(*modelCallback)(Model*);
@@ -64,7 +66,7 @@ private:
 	
 	modelController m_controller;
 	std::vector<Model*> m_children;
-	std::string m_name;
+	ModelNames m_name;
 	Model* m_parent;
 };
 

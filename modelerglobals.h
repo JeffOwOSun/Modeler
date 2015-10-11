@@ -5,10 +5,39 @@
 #define M_PI 3.141592653589793238462643383279502
 #endif
 
+enum ModelNames
+{
+	MENGMEI,
+	UPPERBODY,
+	THORAX,
+	LEFTUPPERARM,
+	LEFTELBOW,
+	LEFTLOWERARM,
+	LEFTHAND,
+	RIGHTUPPERARM,
+	RIGHTELBOW,
+	RIGHTLOWERARM,
+	RIGHTHAND,
+	HEAD,
+	LEFTEYE,
+	RIGHTEYE,
+	LEFTLOWERBODY,
+	LEFTUPPERLEG,
+	LEFTKNEE,
+	LEFTLOWERLEG,
+	LEFTFOOT,
+	RIGHTLOWERBODY,
+	RIGHTUPPERLEG,
+	RIGHTKNEE,
+	RIGHTLOWERLEG,
+	RIGHTFOOT,
+	NUMMODELS
+};
+
 // This is a list of the controls for the SampleModel
 // We'll use these constants to access the values 
 // of the controls from the user interface.
-enum SampleModelControls
+enum ModelControls
 { 
 	// First Lighting control, position and diffusion color
 	LIGHT0_X,
@@ -30,6 +59,25 @@ enum SampleModelControls
 	ZPOS, 
 	HEIGHT, 
 	ROTATE,
+	//Inverse Kinematics Constraints
+	INVERSE_KINEMATICS,
+	HEAD_CSTRN_X,
+	HEAD_CSTRN_Y,
+	HEAD_CSTRN_Z,
+	LHAND_CSTRN_X,
+	LHAND_CSTRN_Y,
+	LHAND_CSTRN_Z,
+	RHAND_CSTRN_X,
+	RHAND_CSTRN_Y,
+	RHAND_CSTRN_Z,
+	LFOOT_CSTRN_X,
+	LFOOT_CSTRN_Y,
+	LFOOT_CSTRN_Z,
+	RFOOT_CSTRN_X,
+	RFOOT_CSTRN_Y,
+	RFOOT_CSTRN_Z,
+	//level of detail. This is the start of model parameters
+	LEVEL_OF_DETAIL,
 	//upperleg control
 	LEFT_ULEG_ROTATE,
 	LEFT_ULEG_SWAYLR,

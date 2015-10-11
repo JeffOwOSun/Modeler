@@ -3,9 +3,9 @@
 #include <Fl/gl.h>
 #include "model.h"
 
-map< std::string, Model* > Model::m_modelList;
+map<ModelNames, Model* > Model::m_modelList;
 
-Model::Model(std::string name, Model* parent) :m_name(name), m_parent(parent), m_beforeDraw(NULL)
+Model::Model(ModelNames name, Model* parent) :m_name(name), m_parent(parent), m_beforeDraw(NULL)
 {
 	//add this model to the static modelList
 	m_modelList[name] = this;
@@ -39,6 +39,13 @@ void Model::Draw()
 	glPopMatrix();
 }
 
+void Model::refreshParameters()
+{
+	//make sure it comes from above
+	if (getParent()) getParent()->refreshParameters();
+	//call before draw to update parameters
+	if (m_beforeDraw) m_beforeDraw(this);
+}
 
 void Model::drawTexture(std::string& fileName, GLuint& handle)
 {

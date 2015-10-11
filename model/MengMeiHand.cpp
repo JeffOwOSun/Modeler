@@ -77,3 +77,5 @@ void MengMeiHand::onDraw()
 	drawTorus(0.6f, 0.15f);
 	glPopMatrix();
 }
+
+MengMeiHand::MengMeiHand(ModelNames name) : Model(name) {}

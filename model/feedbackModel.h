@@ -7,7 +7,7 @@
 class FeedbackModel : public Model
 {
 public:
-	FeedbackModel(string name);
+	FeedbackModel(ModelNames name);
 	void onDraw();
 private:
 	inline void print3DcolorVertex(GLint size, GLint *count,
