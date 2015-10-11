@@ -5,7 +5,7 @@
 
 map< std::string, Model* > Model::m_modelList;
 
-Model::Model(std::string name, Model* parent) :m_name(name), m_parent(parent)
+Model::Model(std::string name, Model* parent) :m_name(name), m_parent(parent), m_beforeDraw(NULL)
 {
 	//add this model to the static modelList
 	m_modelList[name] = this;
@@ -25,7 +25,9 @@ Model* Model::getChild(const int pos)
 void Model::Draw()
 {
 	glPushMatrix();
-	//Calls Control to set the world coordinate
+	//call the beforeDraw callback to update transformations
+	if (m_beforeDraw) m_beforeDraw(this);
+	//Calls Control to apply the transformations
 	m_controller.Control();
 	onDraw();
 

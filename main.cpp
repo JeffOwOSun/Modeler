@@ -42,6 +42,27 @@ int main()
     controls[HEIGHT] = ModelerControl("Height", 1, 2.5, 0.1f, 1);
 	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
 
+	controls[LEFT_ULEG_ROTATE] = ModelerControl("Left Upper Leg Rotate", 0, 80, 1, 0);
+	controls[LEFT_ULEG_SWAYLR] = ModelerControl("Left Upper Leg Sway Left/Right", 0, 90, 1, 0);
+	controls[LEFT_ULEG_SWAYFB] = ModelerControl("Left Upper Leg Sway Front/Back", -60, 150, 1, 0);
+	controls[RIGHT_ULEG_ROTATE] = ModelerControl("Right Upper Leg Rotate", 0, 80, 1, 0);
+	controls[RIGHT_ULEG_SWAYLR] = ModelerControl("Right Upper Leg Sway Left/Right", 0, 90, 1, 0);
+	controls[RIGHT_ULEG_SWAYFB] = ModelerControl("Right Upper Leg Sway Front/Back", -60, 150, 1, 0);
+
+	controls[LEFT_KNEE] = ModelerControl("Left Knee", 0, 160, 1, 0);
+	controls[RIGHT_KNEE] = ModelerControl("Right Knee", 0, 160, 1, 0);
+
+	//controls[LEFT_FOOT_UD] = ModelerControl("Left Foot UD", -30, 90, 1, 0);
+	controls[LEFT_FOOT_LR] = ModelerControl("Left Foot LR", -30, 30, 1, 0);
+	//controls[RIGHT_FOOT_UD] = ModelerControl("Right Foot UD", -30, 90, 1, 0);
+	controls[RIGHT_FOOT_LR] = ModelerControl("Right Foot LR", -30, 30, 1, 0);
+
+	controls[LEFT_ELBOW] = ModelerControl("Left Elbow", 0, 160, 1, 0);
+	controls[RIGHT_ELBOW] = ModelerControl("Right Elbow", 0, 160, 1, 0);
+
+	controls[LEFT_UARM_ROTATE] = ModelerControl("Left Uarm Rotate", -90, 90, 1, 0);
+	controls[RIGHT_UARM_ROTATE] = ModelerControl("Right Uarm Rotate", -90, 90, 1, 0);
+
     ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
     return ModelerApplication::Instance()->Run();
 }

@@ -56,13 +56,16 @@ public:
 
 	//The static map of models
 	static std::map < std::string, Model* > m_modelList;
+
+	//function pointer, callback before draw to update necessary informations;
+	typedef void(*modelCallback)(Model*);
+	modelCallback m_beforeDraw;
 private:
 	
 	modelController m_controller;
 	std::vector<Model*> m_children;
 	std::string m_name;
 	Model* m_parent;
-	
 };
 
 #endif

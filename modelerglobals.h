@@ -29,7 +29,29 @@ enum SampleModelControls
 	YPOS, 
 	ZPOS, 
 	HEIGHT, 
-	ROTATE, 
+	ROTATE,
+	//upperleg control
+	LEFT_ULEG_ROTATE,
+	LEFT_ULEG_SWAYLR,
+	LEFT_ULEG_SWAYFB,
+	RIGHT_ULEG_ROTATE,
+	RIGHT_ULEG_SWAYLR,
+	RIGHT_ULEG_SWAYFB,
+	//knee angle control
+	LEFT_KNEE,
+	RIGHT_KNEE,
+	//feet angle control
+	//LEFT_FOOT_UD,
+	LEFT_FOOT_LR,
+	//RIGHT_FOOT_UD,
+	RIGHT_FOOT_LR,
+	//elbow angle control
+	LEFT_ELBOW,
+	RIGHT_ELBOW,
+	//upperarm rotation
+	LEFT_UARM_ROTATE,
+	RIGHT_UARM_ROTATE,
+	//Make sure this stays at the last
 	NUMCONTROLS
 };
 

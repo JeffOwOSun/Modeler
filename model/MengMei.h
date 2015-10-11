@@ -3,6 +3,7 @@
 
 #include <FL/gl.h>
 #include "../modelerdraw.h"
+#include "../modelerapp.h"
 
 #include "model.h"
 #include "generalModel.h"
