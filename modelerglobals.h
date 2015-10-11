@@ -31,6 +31,11 @@ enum ModelNames
 	RIGHTKNEE,
 	RIGHTLOWERLEG,
 	RIGHTFOOT,
+	HEADCONSTRAINT,
+	LHANDCONSTRAINT,
+	RHANDCONSTRAINT,
+	LFOOTCONSTRAINT,
+	RFOOTCONSTRAINT,
 	NUMMODELS
 };
 
@@ -113,5 +118,6 @@ enum ModelControls
 #define VAL(x) (ModelerApplication::Instance()->GetControlValue(x))
 //CUSTOM: sets the control value
 #define SET(controlNum, value) (ModelerApplication::Instance()->SetControlValue(controlNum, value))
-
+#define STEPUP(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,1))
+#define STEPDOWN(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,-1))
 #endif

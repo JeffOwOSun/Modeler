@@ -155,6 +155,12 @@ void ModelerApplication::SetControlValue(int controlNumber, double value)
     m_controlValueSliders[controlNumber]->value(value);
 }
 
+void ModelerApplication::incrementControlValue(int controlNumber, int times)
+{
+	Fl_Value_Slider* slider = m_controlValueSliders[controlNumber];
+	slider->value(slider->clamp(slider->value() + times * slider->step()));
+}
+
 void ModelerApplication::ShowControl(int controlNumber)
 {
     m_controlLabelBoxes[controlNumber]->show();

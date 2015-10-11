@@ -4,6 +4,7 @@
 #include "MengMeiHead.h"
 #include "MengMeiLowerLeg.h"
 #include "MengMeiFoot.h"
+#include "indicatorModel.h"
 
 MengMei::MengMei() :Model(MENGMEI)
 {
@@ -178,10 +179,34 @@ MengMei::MengMei() :Model(MENGMEI)
 	addChild(leftLowerBody);
 	addChild(rightLowerBody);
 
-	for (auto iter : Model::m_modelList) {
-		std::cout << iter.first <<std::endl;
-	}
+	//-----------------------------------------
+	//Constraint Indicators
+	//THEY ARE NOT CHILDREN OF MAIN CHARACTER
+	//-----------------------------------------
+	IndicatorModel* headConstraint = new IndicatorModel(HEADCONSTRAINT);
+	headConstraint->m_beforeDraw = [](Model* self) {
+		self->getController()->setTrans(VAL(HEAD_CSTRN_X), VAL(HEAD_CSTRN_Y), VAL(HEAD_CSTRN_Z));
+	};
 
+	IndicatorModel* leftHandConstraint = new IndicatorModel(LHANDCONSTRAINT);
+	leftHandConstraint->m_beforeDraw = [](Model* self) {
+		self->getController()->setTrans(VAL(LHAND_CSTRN_X), VAL(LHAND_CSTRN_Y), VAL(LHAND_CSTRN_Z));
+	};
+
+	IndicatorModel* rightHandConstraint = new IndicatorModel(RHANDCONSTRAINT);
+	rightHandConstraint->m_beforeDraw = [](Model* self) {
+		self->getController()->setTrans(VAL(RHAND_CSTRN_X), VAL(RHAND_CSTRN_Y), VAL(RHAND_CSTRN_Z));
+	};
+
+	IndicatorModel* leftFootConstraint = new IndicatorModel(LFOOTCONSTRAINT);
+	leftFootConstraint->m_beforeDraw = [](Model* self) {
+		self->getController()->setTrans(VAL(LFOOT_CSTRN_X), VAL(LFOOT_CSTRN_Y), VAL(LFOOT_CSTRN_Z));
+	};
+
+	IndicatorModel* rightFootConstraint = new IndicatorModel(RFOOTCONSTRAINT);
+	rightFootConstraint->m_beforeDraw = [](Model* self) {
+		self->getController()->setTrans(VAL(RFOOT_CSTRN_X), VAL(RFOOT_CSTRN_Y), VAL(RFOOT_CSTRN_Z));
+	};
 }
 
 void MengMei::onDraw()

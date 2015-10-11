@@ -50,6 +50,8 @@ public:
     // Get and set slider values.
     double GetControlValue(int controlNumber);
     void   SetControlValue(int controlNumber, double value);
+	//CUSTOM: Get increment the slider
+	void   incrementControlValue(int controlNumber, int times);
 
 private:
 	// Private for singleton
