@@ -41,5 +41,7 @@ enum SampleModelControls
 // We'll be getting the instance of the application a lot; 
 // might as well have it as a macro.
 #define VAL(x) (ModelerApplication::Instance()->GetControlValue(x))
+//CUSTOM: sets the control value
+#define SET(controlNum, value) (ModelerApplication::Instance()->SetControlValue(controlNum, value))
 
 #endif

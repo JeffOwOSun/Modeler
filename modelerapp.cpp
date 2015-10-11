@@ -149,6 +149,9 @@ double ModelerApplication::GetControlValue(int controlNumber)
 
 void ModelerApplication::SetControlValue(int controlNumber, double value)
 {
+	//CUSTOM: add clamp
+	value = m_controlValueSliders[controlNumber]->clamp(value);
+
     m_controlValueSliders[controlNumber]->value(value);
 }
 
