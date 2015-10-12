@@ -5,10 +5,44 @@
 #define M_PI 3.141592653589793238462643383279502
 #endif
 
+enum ModelNames
+{
+	MENGMEI,
+	UPPERBODY,
+	THORAX,
+	LEFTUPPERARM,
+	LEFTELBOW,
+	LEFTLOWERARM,
+	LEFTHAND,
+	RIGHTUPPERARM,
+	RIGHTELBOW,
+	RIGHTLOWERARM,
+	RIGHTHAND,
+	HEAD,
+	LEFTEYE,
+	RIGHTEYE,
+	LEFTLOWERBODY,
+	LEFTUPPERLEG,
+	LEFTKNEE,
+	LEFTLOWERLEG,
+	LEFTFOOT,
+	RIGHTLOWERBODY,
+	RIGHTUPPERLEG,
+	RIGHTKNEE,
+	RIGHTLOWERLEG,
+	RIGHTFOOT,
+	HEADCONSTRAINT,
+	LHANDCONSTRAINT,
+	RHANDCONSTRAINT,
+	LFOOTCONSTRAINT,
+	RFOOTCONSTRAINT,
+	NUMMODELS
+};
+
 // This is a list of the controls for the SampleModel
 // We'll use these constants to access the values 
 // of the controls from the user interface.
-enum SampleModelControls
+enum ModelControls
 { 
 	// First Lighting control, position and diffusion color
 	LIGHT0_X,
@@ -29,7 +63,48 @@ enum SampleModelControls
 	YPOS, 
 	ZPOS, 
 	HEIGHT, 
-	ROTATE, 
+	ROTATE,
+	//Inverse Kinematics Constraints
+	INVERSE_KINEMATICS,
+	HEAD_CSTRN_X,
+	HEAD_CSTRN_Y,
+	HEAD_CSTRN_Z,
+	LHAND_CSTRN_X,
+	LHAND_CSTRN_Y,
+	LHAND_CSTRN_Z,
+	RHAND_CSTRN_X,
+	RHAND_CSTRN_Y,
+	RHAND_CSTRN_Z,
+	LFOOT_CSTRN_X,
+	LFOOT_CSTRN_Y,
+	LFOOT_CSTRN_Z,
+	RFOOT_CSTRN_X,
+	RFOOT_CSTRN_Y,
+	RFOOT_CSTRN_Z,
+	//level of detail. This is the start of model parameters
+	LEVEL_OF_DETAIL,
+	//upperleg control
+	LEFT_ULEG_ROTATE,
+	LEFT_ULEG_SWAYLR,
+	LEFT_ULEG_SWAYFB,
+	RIGHT_ULEG_ROTATE,
+	RIGHT_ULEG_SWAYLR,
+	RIGHT_ULEG_SWAYFB,
+	//knee angle control
+	LEFT_KNEE,
+	RIGHT_KNEE,
+	//feet angle control
+	//LEFT_FOOT_UD,
+	LEFT_FOOT_LR,
+	//RIGHT_FOOT_UD,
+	RIGHT_FOOT_LR,
+	//elbow angle control
+	LEFT_ELBOW,
+	RIGHT_ELBOW,
+	//upperarm rotation
+	LEFT_UARM_ROTATE,
+	RIGHT_UARM_ROTATE,
+	//Make sure this stays at the last
 	NUMCONTROLS
 };
 
@@ -41,5 +116,9 @@ enum SampleModelControls
 // We'll be getting the instance of the application a lot; 
 // might as well have it as a macro.
 #define VAL(x) (ModelerApplication::Instance()->GetControlValue(x))
-
+//CUSTOM: sets the control value
+#define SET(controlNum, value) (ModelerApplication::Instance()->SetControlValue(controlNum, value))
+#define STEPUP(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,1))
+#define STEPDOWN(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,-1))
+#define RANDOMIZE(controlNum) (ModelerApplication::Instance()->randomizeControlValue(controlNum,VAL(controlNum), 0.02));
 #endif

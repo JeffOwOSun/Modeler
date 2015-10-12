@@ -1,6 +1,6 @@
 #include "feedbackModel.h"
 
-FeedbackModel::FeedbackModel(string name) : Model(name) {}
+FeedbackModel::FeedbackModel(ModelNames name) : Model(name) {}
 
 void FeedbackModel::onDraw() {
 	

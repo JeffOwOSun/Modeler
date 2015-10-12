@@ -8,6 +8,7 @@ class MengMeiHand : public Model
 {
 public:
 	void onDraw();
+	MengMeiHand(ModelNames name);
 private:
 	GLuint m_texture;
 };

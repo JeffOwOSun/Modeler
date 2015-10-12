@@ -3,11 +3,10 @@
 
 #include <FL/gl.h>
 #include "../modelerdraw.h"
+#include "../modelerapp.h"
 
 #include "model.h"
 #include "generalModel.h"
-#include "MengMeiUpperBody.h"
-#include "MengMeiLowerBody.h"
 
 /**
  * \class This is the connection part between upper body and leg

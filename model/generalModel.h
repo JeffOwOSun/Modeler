@@ -21,7 +21,7 @@ public:
 		NUM_OF_SHAPE
 	};
 
-	GeneralModel(string name, ShapeType type);
+	GeneralModel(ModelNames name, ShapeType type);
 	
 	//the drawing function
 	void onDraw();

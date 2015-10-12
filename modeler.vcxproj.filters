@@ -51,40 +51,19 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="model\MengMeiThroax.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\MengMeiUpperBody.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
     <ClCompile Include="model\MengMeiView.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\MengMeiUpperArm.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="model\MengMeiHead.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="model\MengMeiLowerArm.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\MengMeiLowerBody.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\MengMeiUpperLeg.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
     <ClCompile Include="model\MengMeiLowerLeg.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="model\MengMeiKnee.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
-    <ClCompile Include="model\MengMeiElbow.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
     <ClCompile Include="model\MengMeiHand.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiFoot.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="stb_image.cpp">
@@ -102,7 +81,7 @@
     <ClCompile Include="model\generalModel.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="model\MengMeiFoot.cpp">
+    <ClCompile Include="model\IndicatorModel.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,37 +122,13 @@
     <ClInclude Include="model\MengMei.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="model\MengMeiUpperBody.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MengMeiThroax.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
     <ClInclude Include="model\MengMeiView.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MengMeiUpperArm.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="model\MengMeiHead.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="model\MengMeiLowerArm.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MengMeiLowerBody.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MengMeiUpperLeg.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
     <ClInclude Include="model\MengMeiLowerLeg.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MengMeiKnee.h">
-      <Filter>Header Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="model\MengMeiElbow.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="model\MengMeiFoot.h">
@@ -195,6 +150,9 @@
       <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="model\generalModel.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="model\indicatorModel.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>

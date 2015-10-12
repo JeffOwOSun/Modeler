@@ -149,7 +149,31 @@ double ModelerApplication::GetControlValue(int controlNumber)
 
 void ModelerApplication::SetControlValue(int controlNumber, double value)
 {
+	//CUSTOM: add clamp
+	value = m_controlValueSliders[controlNumber]->clamp(value);
+
     m_controlValueSliders[controlNumber]->value(value);
+}
+
+void ModelerApplication::incrementControlValue(int controlNumber, int times)
+{
+	Fl_Value_Slider* slider = m_controlValueSliders[controlNumber];
+	slider->value(slider->clamp(slider->value() + times * slider->step()));
+}
+
+void ModelerApplication::randomizeControlValue(int controlNumber, double randomizeCenter, double rangePercentile)
+{
+	//find the bound of the slider
+	Fl_Value_Slider* slider = m_controlValueSliders[controlNumber];
+	double uBound = slider->maximum();
+	double lBound = slider->minimum();
+	double range = uBound - lBound;
+	//Find the interval of randomization. Apply clamp to ensure not out of range
+	double uInterval = slider->clamp(randomizeCenter + range * rangePercentile);
+	double lInterval = slider->clamp(randomizeCenter - range * rangePercentile);
+	//get randomizedValue
+	double randomizedValue = (uInterval - lInterval) * ((rand() % 10000) / 10000.0) + lInterval;
+	slider->value(randomizedValue);
 }
 
 void ModelerApplication::ShowControl(int controlNumber)
