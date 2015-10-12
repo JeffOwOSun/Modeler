@@ -43,21 +43,21 @@ int main()
 	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
 
 	controls[INVERSE_KINEMATICS] = ModelerControl("Inverse Kinematics?", 0, 1, 1, 0);
-	controls[HEAD_CSTRN_X] = ModelerControl("Head Constraint X", -10, 10, 1, 0);
-	controls[HEAD_CSTRN_Y] = ModelerControl("Head Constraint Y", -10, 10, 1, 0);
-	controls[HEAD_CSTRN_Z] = ModelerControl("Head Constraint Z", -10, 10, 1, 0);
-	controls[LHAND_CSTRN_X] = ModelerControl("Left Hand Constraint X", -10, 10, 1, 0);
-	controls[LHAND_CSTRN_Y] = ModelerControl("Left Hand Constraint Y", -10, 10, 1, 0);
-	controls[LHAND_CSTRN_Z] = ModelerControl("Left Hand Constraint Z", -10, 10, 1, 0);
-	controls[RHAND_CSTRN_X] = ModelerControl("Right Hand Constraint X", -10, 10, 1, 0);
-	controls[RHAND_CSTRN_Y] = ModelerControl("Right Hand Constraint Y", -10, 10, 1, 0);
-	controls[RHAND_CSTRN_Z] = ModelerControl("Right Hand Constraint Z", -10, 10, 1, 0);
-	controls[LFOOT_CSTRN_X] = ModelerControl("Left Foot Constraint X", -10, 10, 1, 0);
-	controls[LFOOT_CSTRN_Y] = ModelerControl("Left Foot Constraint Y", -10, 10, 1, 0);
-	controls[LFOOT_CSTRN_Z] = ModelerControl("Left Foot Constraint Z", -10, 10, 1, 0);
-	controls[RFOOT_CSTRN_X] = ModelerControl("Right Foot Constraint X", -10, 10, 1, 0);
-	controls[RFOOT_CSTRN_Y] = ModelerControl("Right Foot Constraint Y", -10, 10, 1, 0);
-	controls[RFOOT_CSTRN_Z] = ModelerControl("Right Foot Constraint Z", -10, 10, 1, 0);
+	controls[HEAD_CSTRN_X] = ModelerControl("Head Constraint X", -10, 10, 0.1, 0);
+	controls[HEAD_CSTRN_Y] = ModelerControl("Head Constraint Y", -10, 10, 0.1, 0);
+	controls[HEAD_CSTRN_Z] = ModelerControl("Head Constraint Z", -10, 10, 0.1, 0);
+	controls[LHAND_CSTRN_X] = ModelerControl("Left Hand Constraint X", -10, 10, 0.1, 0);
+	controls[LHAND_CSTRN_Y] = ModelerControl("Left Hand Constraint Y", -10, 10, 0.1, 0);
+	controls[LHAND_CSTRN_Z] = ModelerControl("Left Hand Constraint Z", -10, 10, 0.1, 0);
+	controls[RHAND_CSTRN_X] = ModelerControl("Right Hand Constraint X", -10, 10, 0.1, 0);
+	controls[RHAND_CSTRN_Y] = ModelerControl("Right Hand Constraint Y", -10, 10, 0.1, 0);
+	controls[RHAND_CSTRN_Z] = ModelerControl("Right Hand Constraint Z", -10, 10, 0.1, 0);
+	controls[LFOOT_CSTRN_X] = ModelerControl("Left Foot Constraint X", -10, 10, 0.1, 0);
+	controls[LFOOT_CSTRN_Y] = ModelerControl("Left Foot Constraint Y", -10, 10, 0.1, 0);
+	controls[LFOOT_CSTRN_Z] = ModelerControl("Left Foot Constraint Z", -10, 10, 0.1, 0);
+	controls[RFOOT_CSTRN_X] = ModelerControl("Right Foot Constraint X", -10, 10, 0.1, 0);
+	controls[RFOOT_CSTRN_Y] = ModelerControl("Right Foot Constraint Y", -10, 10, 0.1, 0);
+	controls[RFOOT_CSTRN_Z] = ModelerControl("Right Foot Constraint Z", -10, 10, 0.1, 0);
 
 	controls[LEVEL_OF_DETAIL] = ModelerControl("Level of Detail", 1, 5, 1, 0);
 

@@ -6,16 +6,21 @@
 
 #include<exception>
 #include"InverseKinematics.h"
+#include<cstdlib>
+#include<ctime>
+
 using namespace std;
 
-void IKOneStep() {
+void IKOneStep(vector<double> &momentum) {
 	//Calculate the derivative using numerical method
 	/**
 	* The delta value signifying an increment.
 	*/
 	const float delta = 0.1f;
-	const float learningRate = 1.5f;
-	//Modify the parameters
+	const float learningRate = 0.5f;
+	const float inertia = 1 - learningRate;
+	const float magnifying = 1.5f;
+	//the gradient vector
 	vector<float> gradient;
 	//calculate gradient
 	const int startPos = LEVEL_OF_DETAIL + 1;
@@ -31,21 +36,38 @@ void IKOneStep() {
 		//calculate
 		float deltaY = plusCost - minusCost;
 		float derivative = deltaY / (2 * delta);
-		gradient.push_back(derivative);
+		gradient.push_back(magnifying * derivative);
 	}
-	for (float& x : gradient) x = x * learningRate;
+	for (int i = 0; i < momentum.size(); ++i) {
+		momentum[i] = inertia * momentum[i] + learningRate * gradient[i];
+	}
 	//subtract the gradient from parameters
 	for (int i = startPos; i < NUMCONTROLS; ++i) {
-		SET(i, VAL(i) - gradient[i - startPos]);
+		SET(i, VAL(i) - learningRate * momentum[i - startPos]);
 	}
 }
 
 void IKOptimize() {
+	//parameters for the learning
 	const int maxNumIteration = 1000;
-	const double epselon = 0.001;
+	const double epselon = 0.00001;
+	//remember the last Cost function so that one can break off whenever it stables
 	double lastCost = IKCostFunction(), thisCost = 0;
+
+	/*
+	//randomize the initial value of controls
+	srand(time(NULL));
+	const int startPos = LEVEL_OF_DETAIL + 1;
+	for (int i = startPos; i < NUMCONTROLS; ++i) {
+		RANDOMIZE(i);
+	}*/
+
+	//optimize
+	//the momentum vector
+	const int vectorLength = NUMCONTROLS - LEVEL_OF_DETAIL - 1;
+	vector<double> momentum = vector<double>(vectorLength, 0);
 	for (int i = 0; i < maxNumIteration; ++i) {
-		IKOneStep();
+		IKOneStep(momentum);
 		thisCost = IKCostFunction();
 		//for debug use
 		printf("cost%d: %f\n", i, thisCost);

@@ -120,4 +120,5 @@ enum ModelControls
 #define SET(controlNum, value) (ModelerApplication::Instance()->SetControlValue(controlNum, value))
 #define STEPUP(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,1))
 #define STEPDOWN(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,-1))
+#define RANDOMIZE(controlNum) (ModelerApplication::Instance()->randomizeControlValue(controlNum,VAL(controlNum), 0.02));
 #endif

@@ -52,6 +52,9 @@ public:
     void   SetControlValue(int controlNumber, double value);
 	//CUSTOM: Get increment the slider
 	void   incrementControlValue(int controlNumber, int times);
+	//CUSTOM: Randomize the slider value, with given randomization Center and the percent
+	//range of the random intervals
+	void   randomizeControlValue(int controlNumber, double randomizeCenter, double rangePercentile);
 
 private:
 	// Private for singleton
