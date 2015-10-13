@@ -3,12 +3,13 @@
 #include "MengMeiHand.h"
 #include "MengMeiHead.h"
 #include "MengMeiLowerLeg.h"
+#include "../MetaBall.h"
 #include "MengMeiFoot.h"
 #include "indicatorModel.h"
 
 MengMei::MengMei() :Model(MENGMEI)
 {
-	this->getController()->setTransY(6.0f);
+	this->getController()->setTransY(-5.0f);
 
 	GeneralModel* upperBody = new GeneralModel(UPPERBODY, GeneralModel::CYLINDER_SHAPE);
 	upperBody->setTexture("./res/MengMeiBody.jpg");
@@ -213,8 +214,18 @@ void MengMei::onDraw()
 {
 	glPushMatrix();
 	drawSphere(0.8f);
+
+	//MetaBall* mb = new MetaBall(1);
+	//mb->addBallRel(0, 0, 2.0, 4.0);
+	//mb->addBallRel(-1, -1, 2.0, 8.0);
+	//mb->addBallRel(1, 1, 2.0, 4.0);
+	//mb->addBallRel(-1, 1, 2.0, 8.0);
+	//mb->addBallRel(1, -1, 2.0, 8.0);
+	//mb->cal();
+	//mb->draw(20);
 	glPopMatrix();
 
+	//delete mb;
 	glPushMatrix();
 	glTranslatef(0.5f, -0.25f, 0.0f);
 	glRotatef(90, 0.0f, 1.0f, 0.0f);
@@ -250,7 +261,7 @@ void MengMei::onDraw()
 	glRotatef(90, 0.0f, 1.0f, 0.0f);
 	glRotatef(-60, 1.0f, 0.0f, 0.0f);
 	glTranslatef(0.0f, 0.0f, -1.0f);
-	drawCylinder(1.0f, 0.5f, 0.5f);
+	//drawCylinder(1.0f, 0.5f, 0.5f);
 #ifdef _DEBUG
 	//draw the reference coordinate system
 	setAmbientColor(0.1f, 0.1f, 0.1f);
@@ -275,6 +286,4 @@ void MengMei::onDraw()
 	setDiffuseColor(1.0f, 1.0f, 1.0f);
 #endif
 	glPopMatrix();
-
-	
 }

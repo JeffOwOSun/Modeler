@@ -6,6 +6,7 @@
 struct mcVertex
 {
 	Vec3f position;		// position of vertex
+	Vec3f normal;
 	float value;		// value of scaler filed in this position
 };
 
@@ -26,7 +27,6 @@ public:
 	MarchingCube(int numGrid);
 	void drawSurface(float threshold);
 	~MarchingCube();
-private:
 	int numVertices;
 	int numCubes;
 	int numSurface;
@@ -34,6 +34,20 @@ private:
 	mcCube* m_cubes;
 
 };
+
+const int verticesAtEndsOfEdges[24] =
+{ 0, 1,
+1, 2,
+2, 3,
+3, 0,
+4, 5,
+5, 6,
+6, 7,
+7, 4,
+0, 4,
+1, 5,
+2, 6,
+3, 7 };
 
 //gives the edges to interpolate along given vertex inside/outside
 const int edgeTable[256] = {

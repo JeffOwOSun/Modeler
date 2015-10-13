@@ -1,25 +1,21 @@
 
 #include "MengMeiHead.h"
 
-#define point1 0.0f, 0.0f, 0.0f
-#define point2 0.5f, 0.3f, 0.0f
-#define point3 0.7f, 0.9f, 0.4f
-#define point4 -0.5f, 0.3f, 0.0f
-#define point5 -0.7f, 0.9f, 0.4f
-#define point6 0.6f, 1.2f, 0.3f
-#define point7 -0.6f, 1.2f, 0.3f
-#define point8 0.0f, 1.5f, 0.0f
+#define HT1 -0.3f, 0.0f, -0.1f
+#define HT2 -0.12f, 0.0f, 0.15f
+#define HT3 0.0f, 0.0f, 0.2f
+#define HT4 0.12f, 0.0f, 0.15f
+#define HT5 0.3f, 0.0f, -0.1f
 
-#define point9 0.7f, 0.9f, -0.3f
-#define point10 -0.7f, 0.9f, -0.3f
-#define point11 0.0f, 1.1f, -0.6f
-#define point12 0.6f, 1.2f, -0.1f
-#define point13 -0.6f, 1.2f, -0.1f
-#define point14 0.0f, 1.5f, 0.0f
-
-#define point15 0.0f, 0.3f, 0.3f
-#define point16 0.0f, 1.2f, 0.3f
-
+#define HT11 -0.25f, 0.6f, -0.1f
+#define HT12 -0.225f, 0.6f, 0.05f
+#define HT13 -0.15f, 0.6f, 0.15f
+#define HT14 -0.1f, 0.6f, 0.2f
+#define HT15 0.0f, 0.6f, 0.25f
+#define HT16 0.1f, 0.6f, 0.2f
+#define HT17 0.15f, 0.6f, 0.15f
+#define HT18 0.225f, 0.6f, 0.05f
+#define HT19 0.25f, 0.6f, -0.1f
 
 MengMeiHead::MengMeiHead() : Model(HEAD)
 {
@@ -37,35 +33,20 @@ MengMeiHead::MengMeiHead() : Model(HEAD)
 
 void MengMeiHead::onDraw()
 {
-	//drawSphere(0.7f);
+	// neck-layer, 头最下面一层，底层4，上层9
+	drawTriangle(HT1, HT12, HT11);
+	drawTriangle(HT2, HT13, HT12);
+	drawTriangle(HT12, HT1, HT2);
+	drawTriangle(HT2, HT14, HT13);
+	drawTriangle(HT2, HT3, HT15);
+	drawTriangle(HT15, HT14, HT2);
+	drawTriangle(HT3, HT4, HT15);
+	drawTriangle(HT4, HT16, HT15);
+	drawTriangle(HT4, HT17, HT16);
+	drawTriangle(HT4, HT5, HT17);
+	drawTriangle(HT5, HT18, HT17);
+	drawTriangle(HT5, HT19, HT18);
 
-	// starting lower poing
-	drawTriangle(point1, point2, point3);
-	drawTriangle(point1, point4, point5);
-	drawTriangle(point1, point3, point15);
-	drawTriangle(point1, point15, point5);
-	drawTriangle(point3, point6, point8);
-	drawTriangle(point7, point5, point8);
-	drawTriangle(point5, point16, point8);
-	drawTriangle(point3, point8, point16);
-	drawTriangle(point5, point3, point16);
-	drawTriangle(point5, point15, point3);
 
-	drawTriangle(point1, point2, point9);
-	drawTriangle(point4, point1, point10);
-	drawTriangle(point1, point9, point11);
-	drawTriangle(point10, point1, point11);
-	
-	drawTriangle(point2, point3, point9);
-	drawTriangle(point4, point5, point10);
-	drawTriangle(point9, point12, point11);
-	drawTriangle(point11, point10, point13);
-	drawTriangle(point12, point11, point14);
-	drawTriangle(point11, point13, point14);
 
-	drawTriangle(point10, point5, point13);
-	drawTriangle(point13, point5, point14);
-	drawTriangle(point9, point3, point12);
-	drawTriangle(point12, point3, point14);
-	
 }
