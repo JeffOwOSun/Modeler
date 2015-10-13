@@ -8,34 +8,76 @@
 #include"InverseKinematics.h"
 #include<cstdlib>
 #include<ctime>
+#include<cassert>
 
 using namespace std;
 
-void IKOneStep(vector<double> &momentum) {
+std::vector<double> IK::momentum = std::vector<double>(vectorLength, 0.0);
+std::vector<double> IK::statusQuo = std::vector<double>(vectorLength, 0.0);
+
+const double IK::epselon = 0.00001;
+const double IK::targetCostCoeff = 8;
+const double IK::statusQuoCoeff = 3;
+
+const double IK::delta = 0.1;
+const double IK::learningRate = 0.1;
+const double IK::inertia = 1 - learningRate;
+const double IK::magnifying = 1.2;
+
+void IK::optimize() {
+
+	//remember the old parameters for statusQuo calculation
+	for (int i = 0; i < vectorLength; ++i) {
+		statusQuo[i] = (VAL(startPos + i));
+	}
+	//reset the momentum vector
+	std::fill(momentum.begin(), momentum.end(), 0.0);
+
+	//remember the last Cost function so that one can break off whenever it stables
+	double lastCost = costFunction(), thisCost = 0;
+
+	//randomize the initial value of controls
+	srand(time(NULL));
+	for (int i = startPos; i < NUMCONTROLS; ++i) {
+		RANDOMIZE(i);
+	}
+	
+	//optimize
+	for (int i = 0; i < maxNumIteration; ++i) {
+		oneStep();
+		thisCost = costFunction();
+		//for debug use
+#ifdef _DEBUG
+		printf("cost%d: %f\n", i, thisCost);
+#endif
+		//break if the change is small enough
+		if (abs(lastCost - thisCost) < epselon) break;
+		lastCost = thisCost;
+	}
+}
+
+void IK::oneStep() {
 	//Calculate the derivative using numerical method
 	/**
 	* The delta value signifying an increment.
 	*/
-	const float delta = 0.1f;
-	const float learningRate = 0.5f;
-	const float inertia = 1 - learningRate;
-	const float magnifying = 1.5f;
+	
 	//the gradient vector
-	vector<float> gradient;
+	vector<double> gradient;
 	//calculate gradient
 	const int startPos = LEVEL_OF_DETAIL + 1;
 	for (int i = startPos; i < NUMCONTROLS; ++i) {
 		//backup parameter i
-		float x = VAL(i);
+		double x = VAL(i);
 		STEPUP(i);
-		float plusCost = IKCostFunction();
+		double plusCost = costFunction();
 		SET(i, x);
 		STEPDOWN(i);
-		float minusCost = IKCostFunction();
+		double minusCost = costFunction();
 		SET(i, x); //restore parameter
 		//calculate
-		float deltaY = plusCost - minusCost;
-		float derivative = deltaY / (2 * delta);
+		double deltaY = plusCost - minusCost;
+		double derivative = deltaY / (2 * delta);
 		gradient.push_back(magnifying * derivative);
 	}
 	for (int i = 0; i < momentum.size(); ++i) {
@@ -43,42 +85,11 @@ void IKOneStep(vector<double> &momentum) {
 	}
 	//subtract the gradient from parameters
 	for (int i = startPos; i < NUMCONTROLS; ++i) {
-		SET(i, VAL(i) - learningRate * momentum[i - startPos]);
+		SET(i, VAL(i) - /*learningRate * */momentum[i - startPos]);
 	}
 }
 
-void IKOptimize() {
-	//parameters for the learning
-	const int maxNumIteration = 1000;
-	const double epselon = 0.00001;
-	//remember the last Cost function so that one can break off whenever it stables
-	double lastCost = IKCostFunction(), thisCost = 0;
-
-	/*
-	//randomize the initial value of controls
-	srand(time(NULL));
-	const int startPos = LEVEL_OF_DETAIL + 1;
-	for (int i = startPos; i < NUMCONTROLS; ++i) {
-		RANDOMIZE(i);
-	}*/
-
-	//optimize
-	//the momentum vector
-	const int vectorLength = NUMCONTROLS - LEVEL_OF_DETAIL - 1;
-	vector<double> momentum = vector<double>(vectorLength, 0);
-	for (int i = 0; i < maxNumIteration; ++i) {
-		IKOneStep(momentum);
-		thisCost = IKCostFunction();
-		//for debug use
-		printf("cost%d: %f\n", i, thisCost);
-
-		//break if the change is small enough
-		if (abs(lastCost - thisCost) < epselon) break;
-		lastCost = thisCost;
-	}
-}
-
-double IKCostFunction() {
+double IK::targetCost() {
 	//Calculate the cost. Call refreshParameters() to make sure internal control parameters are 
 	//up to date with sliders
 	//head cost
@@ -112,4 +123,25 @@ double IKCostFunction() {
 	double rightFootCost = (rightFootPos - rightFootConstraint).length();
 
 	return headCost + leftHandCost + rightHandCost + leftFootCost + rightFootCost;
+}
+
+double IK::statusQuoCost() {
+	const int numParam = vectorLength;
+	double cost = 0;
+	for (int i = 0; i < numParam; ++i) {
+		//get the range of the control
+		double range = RANGE(startPos + i);
+		//normalize the difference
+		double difference = abs(VAL(i + startPos) - statusQuo[i]) / range;
+		cost += difference;
+	}
+	//take an average
+	//cost /= numParam;
+	
+	//the final cost will be a number smaller than 1
+	return cost;
+}
+
+double IK::costFunction() {
+	return targetCostCoeff * targetCost() + statusQuoCoeff * statusQuoCost();
 }

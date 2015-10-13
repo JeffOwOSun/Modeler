@@ -169,11 +169,30 @@ void ModelerApplication::randomizeControlValue(int controlNumber, double randomi
 	double lBound = slider->minimum();
 	double range = uBound - lBound;
 	//Find the interval of randomization. Apply clamp to ensure not out of range
-	double uInterval = slider->clamp(randomizeCenter + range * rangePercentile);
-	double lInterval = slider->clamp(randomizeCenter - range * rangePercentile);
+	double uInterval = randomizeCenter + 2 * range * rangePercentile;
+	double lInterval = randomizeCenter + range * rangePercentile;
+	if (lInterval != slider->clamp(lInterval)) { //if the lInterval is out of range
+		//then the slider value is too close to the maximum
+		//need to invert the randomization range
+		lInterval = 2 * randomizeCenter - lInterval;
+		uInterval = 2 * randomizeCenter - uInterval;
+	}
+	//finally clamp the uInterval
+	uInterval = slider->clamp(uInterval);
 	//get randomizedValue
 	double randomizedValue = (uInterval - lInterval) * ((rand() % 10000) / 10000.0) + lInterval;
 	slider->value(randomizedValue);
+}
+
+
+double ModelerApplication::getControlMaximum(int controlNumber)
+{
+	return m_controlValueSliders[controlNumber]->maximum();
+}
+
+double ModelerApplication::getControlMinimum(int controlNumber)
+{
+	return m_controlValueSliders[controlNumber]->minimum();
 }
 
 void ModelerApplication::ShowControl(int controlNumber)

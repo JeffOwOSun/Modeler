@@ -64,7 +64,7 @@ void MengMeiView::draw()
 		Model::m_modelList[RFOOTCONSTRAINT]->Draw();
 
 		//get the optimized parameters
-		IKOptimize();
+		IK::optimize();
 	}
 	else {
 		IKLastState = false;
