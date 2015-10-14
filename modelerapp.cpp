@@ -8,6 +8,7 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <random>
 
 // CLASS ModelerControl METHODS
 
@@ -161,7 +162,7 @@ void ModelerApplication::incrementControlValue(int controlNumber, int times)
 	slider->value(slider->clamp(slider->value() + times * slider->step()));
 }
 
-void ModelerApplication::randomizeControlValue(int controlNumber, double randomizeCenter, double rangePercentile)
+void ModelerApplication::randomizeControlValue(int controlNumber, double randomizeCenter, double rangePercentile, double shiftPercentile)
 {
 	//find the bound of the slider
 	Fl_Value_Slider* slider = m_controlValueSliders[controlNumber];
@@ -169,8 +170,8 @@ void ModelerApplication::randomizeControlValue(int controlNumber, double randomi
 	double lBound = slider->minimum();
 	double range = uBound - lBound;
 	//Find the interval of randomization. Apply clamp to ensure not out of range
-	double uInterval = randomizeCenter + 2 * range * rangePercentile;
-	double lInterval = randomizeCenter + range * rangePercentile;
+	double uInterval = randomizeCenter + range * (rangePercentile + shiftPercentile);
+	double lInterval = randomizeCenter + range * shiftPercentile;
 	if (lInterval != slider->clamp(lInterval)) { //if the lInterval is out of range
 		//then the slider value is too close to the maximum
 		//need to invert the randomization range
@@ -180,7 +181,9 @@ void ModelerApplication::randomizeControlValue(int controlNumber, double randomi
 	//finally clamp the uInterval
 	uInterval = slider->clamp(uInterval);
 	//get randomizedValue
-	double randomizedValue = (uInterval - lInterval) * ((rand() % 10000) / 10000.0) + lInterval;
+	std::default_random_engine gen;
+	std::uniform_real_distribution<double> rand(0.0, 1.0);
+	double randomizedValue = (uInterval - lInterval) * (rand(gen)) + lInterval;
 	slider->value(randomizedValue);
 }
 

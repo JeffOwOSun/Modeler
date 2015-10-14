@@ -7,7 +7,7 @@
 #include<exception>
 #include"InverseKinematics.h"
 #include<cstdlib>
-#include<ctime>
+#include<random>
 #include<cassert>
 
 using namespace std;
@@ -37,7 +37,6 @@ void IK::optimize() {
 	double lastCost = costFunction(), thisCost = 0;
 
 	//randomize the initial value of controls
-	srand(time(NULL));
 	for (int i = startPos; i < NUMCONTROLS; ++i) {
 		RANDOMIZE(i);
 	}
