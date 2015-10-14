@@ -7,6 +7,7 @@
 #include<exception>
 #include"InverseKinematics.h"
 #include<cstdlib>
+#include<ctime>
 #include<random>
 #include<cassert>
 
@@ -14,6 +15,7 @@ using namespace std;
 
 std::vector<double> IK::momentum = std::vector<double>(vectorLength, 0.0);
 std::vector<double> IK::statusQuo = std::vector<double>(vectorLength, 0.0);
+std::vector<double> IK::currState = std::vector<double>(vectorLength, 0.0);
 
 const double IK::epselon = 0.00001;
 const double IK::targetCostCoeff = 8;
@@ -24,26 +26,70 @@ const double IK::learningRate = 0.1;
 const double IK::inertia = 1 - learningRate;
 const double IK::magnifying = 1.2;
 
-void IK::optimize() {
+const double IK::temperatureMax = 1.0;
+const double IK::temperatureStep = 0.003;
 
-	//remember the old parameters for statusQuo calculation
-	for (int i = 0; i < vectorLength; ++i) {
-		statusQuo[i] = (VAL(startPos + i));
+void IK::optimize() {
+	srand(time(NULL));
+	//store statusQuo
+	saveStatusQuo();
+	optimizeAnneal();
+	optimizeGradientDesc();
+}
+
+void IK::optimizeAnneal() {
+	//random generator and uniform distribution
+	std::default_random_engine gen;
+	std::uniform_real_distribution<double> rand(0.0, 1.0);
+
+	//cost of current state
+	double lastCost = costFunction(), cost;
+	saveCurrState();
+
+	for (double temp = temperatureMax; temp > 0; temp -= temperatureStep) {
+		//get a neighborhood state
+		for (int i = startPos; i < endPos; ++i) {
+			RANDOMIZE(i, 0.03, 0.0);
+		}
+		cost = costFunction();
+#ifdef _DEBUG
+		printf("temp: %.2f cost: %f lastCost: %f\n", temp, cost, lastCost);
+#endif
+		if (cost < lastCost) {
+			//remember this state
+			saveCurrState();
+			lastCost = cost;
+		}
+		else {
+			if (rand(gen) < exp(-(cost - lastCost) / temp)) {
+				//accept the worse solution
+				saveCurrState();
+				lastCost = cost;
+			}
+			else {
+				//reject the worse solution by loading previous statusQuo
+				loadCurrState();
+			}
+		}
 	}
+}
+
+void IK::optimizeGradientDesc() {
 	//reset the momentum vector
 	std::fill(momentum.begin(), momentum.end(), 0.0);
 
 	//remember the last Cost function so that one can break off whenever it stables
 	double lastCost = costFunction(), thisCost = 0;
 
+	/*
 	//randomize the initial value of controls
-	for (int i = startPos; i < NUMCONTROLS; ++i) {
-		RANDOMIZE(i);
-	}
+	for (int i = startPos; i < endPos; ++i) {
+		RANDOMIZE(i, 0.3, 0.1);
+	}*/
 	
 	//optimize
 	for (int i = 0; i < maxNumIteration; ++i) {
-		oneStep();
+		oneStepGradeintDesc();
 		thisCost = costFunction();
 		//for debug use
 #ifdef _DEBUG
@@ -55,7 +101,7 @@ void IK::optimize() {
 	}
 }
 
-void IK::oneStep() {
+void IK::oneStepGradeintDesc() {
 	//Calculate the derivative using numerical method
 	/**
 	* The delta value signifying an increment.
@@ -64,8 +110,7 @@ void IK::oneStep() {
 	//the gradient vector
 	vector<double> gradient;
 	//calculate gradient
-	const int startPos = LEVEL_OF_DETAIL + 1;
-	for (int i = startPos; i < NUMCONTROLS; ++i) {
+	for (int i = startPos; i < endPos; ++i) {
 		//backup parameter i
 		double x = VAL(i);
 		STEPUP(i);
@@ -83,7 +128,7 @@ void IK::oneStep() {
 		momentum[i] = inertia * momentum[i] + learningRate * gradient[i];
 	}
 	//subtract the gradient from parameters
-	for (int i = startPos; i < NUMCONTROLS; ++i) {
+	for (int i = startPos; i < endPos; ++i) {
 		SET(i, VAL(i) - /*learningRate * */momentum[i - startPos]);
 	}
 }
@@ -95,32 +140,34 @@ double IK::targetCost() {
 	Model::m_modelList[HEAD]->refreshParameters();
 	Vec3f headPos = Model::m_modelList[HEAD]->getOrigin();
 	Vec3f headConstraint(VAL(HEAD_CSTRN_X), VAL(HEAD_CSTRN_Y), VAL(HEAD_CSTRN_Z));
-	double headCost = (headPos - headConstraint).length();
+	double headCost = (headPos - headConstraint).length2();
 
 	//left hand cost
 	Model::m_modelList[LEFTHAND]->refreshParameters();
 	Vec3f leftHandPos = Model::m_modelList[LEFTHAND]->getOrigin();
 	Vec3f leftHandConstraint(VAL(LHAND_CSTRN_X), VAL(LHAND_CSTRN_Y), VAL(LHAND_CSTRN_Z));
-	double leftHandCost = (leftHandPos - leftHandConstraint).length();
+	double leftHandCost = (leftHandPos - leftHandConstraint).length2();
 
 	//right hand cost
 	Model::m_modelList[RIGHTHAND]->refreshParameters();
 	Vec3f rightHandPos = Model::m_modelList[RIGHTHAND]->getOrigin();
 	Vec3f rightHandConstraint(VAL(RHAND_CSTRN_X), VAL(RHAND_CSTRN_Y), VAL(RHAND_CSTRN_Z));
-	double rightHandCost = (rightHandPos - rightHandConstraint).length();
+	double rightHandCost = (rightHandPos - rightHandConstraint).length2();
 
 	//left foot cost
 	Model::m_modelList[LEFTFOOT]->refreshParameters();
 	Vec3f leftFootPos = Model::m_modelList[LEFTFOOT]->getOrigin();
 	Vec3f leftFootConstraint(VAL(LFOOT_CSTRN_X), VAL(LFOOT_CSTRN_Y), VAL(LFOOT_CSTRN_Z));
-	double leftFootCost = (leftFootPos - leftFootConstraint).length();
+	double leftFootCost = (leftFootPos - leftFootConstraint).length2();
 
 	//right foot cost
 	Model::m_modelList[RIGHTFOOT]->refreshParameters();
 	Vec3f rightFootPos = Model::m_modelList[RIGHTFOOT]->getOrigin();
 	Vec3f rightFootConstraint(VAL(RFOOT_CSTRN_X), VAL(RFOOT_CSTRN_Y), VAL(RFOOT_CSTRN_Z));
-	double rightFootCost = (rightFootPos - rightFootConstraint).length();
-
+	double rightFootCost = (rightFootPos - rightFootConstraint).length2();
+#ifdef _DEBUG
+	//printf("head %f lHand %f rhand %f lfoot %f rfoot %f\n", headCost, leftHandCost, rightHandCost, leftFootCost, rightFootCost);
+#endif
 	return headCost + leftHandCost + rightHandCost + leftFootCost + rightFootCost;
 }
 
@@ -142,5 +189,28 @@ double IK::statusQuoCost() {
 }
 
 double IK::costFunction() {
-	return targetCostCoeff * targetCost() + statusQuoCoeff * statusQuoCost();
+	double target = targetCostCoeff > 0 ? targetCost() : 0.0;
+	double statusQuo = statusQuoCoeff > 0 ? statusQuoCost() : 0.0;
+#ifdef _DEBUG
+	//printf("targetCost %f, statusQuoCost %f ", target, statusQuo);
+#endif
+	return targetCostCoeff * target + statusQuoCoeff * statusQuo;
+}
+
+void IK::saveStatusQuo() {
+	for (int i = 0; i < vectorLength; ++i) {
+		statusQuo[i] = (VAL(startPos + i));
+	}
+}
+
+void IK::saveCurrState() {
+	for (int i = 0; i < vectorLength; ++i) {
+		currState[i] = (VAL(startPos + i));
+	}
+}
+
+void IK::loadCurrState() {
+	for (int i = 0; i < vectorLength; ++i) {
+		SET(startPos + i, currState[i]);
+	}
 }

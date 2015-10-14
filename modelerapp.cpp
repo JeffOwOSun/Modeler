@@ -8,7 +8,6 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
-#include <random>
 
 // CLASS ModelerControl METHODS
 
@@ -170,20 +169,26 @@ void ModelerApplication::randomizeControlValue(int controlNumber, double randomi
 	double lBound = slider->minimum();
 	double range = uBound - lBound;
 	//Find the interval of randomization. Apply clamp to ensure not out of range
-	double uInterval = randomizeCenter + range * (rangePercentile + shiftPercentile);
-	double lInterval = randomizeCenter + range * shiftPercentile;
-	if (lInterval != slider->clamp(lInterval)) { //if the lInterval is out of range
-		//then the slider value is too close to the maximum
-		//need to invert the randomization range
-		lInterval = 2 * randomizeCenter - lInterval;
-		uInterval = 2 * randomizeCenter - uInterval;
-	}
-	//finally clamp the uInterval
-	uInterval = slider->clamp(uInterval);
+	double uIntervalub = randomizeCenter + range * (rangePercentile + shiftPercentile);
+	double uIntervallb = randomizeCenter + range * shiftPercentile;
+	double lIntervallb = 2 * randomizeCenter - uIntervalub;
+	double lIntervalub = 2 * randomizeCenter - uIntervallb;
+	uIntervalub = slider->clamp(uIntervalub);
+	uIntervallb = slider->clamp(uIntervallb);
+	lIntervalub = slider->clamp(lIntervalub);
+	lIntervallb = slider->clamp(lIntervallb);
+	double lrandomRange = uIntervalub - uIntervallb;
+	double urandomRange = lIntervalub - lIntervallb;
+
 	//get randomizedValue
-	std::default_random_engine gen;
-	std::uniform_real_distribution<double> rand(0.0, 1.0);
-	double randomizedValue = (uInterval - lInterval) * (rand(gen)) + lInterval;
+	double randNum = (double)rand() / RAND_MAX;
+	double randomizedValue = randNum * (lrandomRange + urandomRange);
+	if (randomizedValue > lrandomRange) {
+		randomizedValue = randomizedValue - lrandomRange + uIntervallb;
+	}
+	else {
+		randomizedValue = randomizedValue + lIntervallb;
+	}
 	slider->value(randomizedValue);
 }
 
