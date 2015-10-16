@@ -87,6 +87,14 @@
     <ClCompile Include="model\IndicatorModel.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="MarchingCube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MetaBall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="model\MengMeiMetaBall.cpp">
+      <Filter>Source Files\model</Filter>
     <ClCompile Include="lsys\LSystem.cpp">
       <Filter>LSYS</Filter>
     </ClCompile>
@@ -167,6 +175,14 @@
     <ClInclude Include="model\indicatorModel.h">
       <Filter>Header Files\model</Filter>
     </ClInclude>
+    <ClInclude Include="MarchingCube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MetaBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiMetaBall.h">
+      <Filter>Header Files\model</Filter>
     <ClInclude Include="lsys\LSystem.h">
       <Filter>LSYS</Filter>
     </ClInclude>

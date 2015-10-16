@@ -148,6 +148,8 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <ClCompile Include="MarchingCube.cpp" />
+    <ClCompile Include="MetaBall.cpp" />
     <ClCompile Include="lsys\LSystem.cpp" />
     <ClCompile Include="lsys\plantLSystem.cpp" />
     <ClCompile Include="lsys\treeLSystem.cpp" />
@@ -184,6 +186,7 @@
     <ClCompile Include="model\MengMeiHand.cpp" />
     <ClCompile Include="model\MengMeiHead.cpp" />
     <ClCompile Include="model\MengMeiLowerLeg.cpp" />
+    <ClCompile Include="model\MengMeiMetaBall.cpp" />
     <ClCompile Include="model\MengMeiView.cpp" />
     <ClCompile Include="model\model.cpp" />
     <ClCompile Include="model\modelController.cpp" />
@@ -200,10 +203,12 @@
     <ClInclude Include="bitmap.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="InverseKinematics.h" />
+    <ClInclude Include="MarchingCube.h" />
     <ClInclude Include="lsys\LSystem.h" />
     <ClInclude Include="lsys\plantLSystem.h" />
     <ClInclude Include="lsys\treeLSystem.h" />
     <ClInclude Include="mat.h" />
+    <ClInclude Include="MetaBall.h" />
     <ClInclude Include="modelerapp.h" />
     <ClInclude Include="modelerdraw.h" />
     <ClInclude Include="modelerglobals.h" />
@@ -217,6 +222,7 @@
     <ClInclude Include="model\MengMeiHand.h" />
     <ClInclude Include="model\MengMeiHead.h" />
     <ClInclude Include="model\MengMeiLowerLeg.h" />
+    <ClInclude Include="model\MengMeiMetaBall.h" />
     <ClInclude Include="model\MengMeiView.h" />
     <ClInclude Include="model\model.h" />
     <ClInclude Include="model\modelController.h" />

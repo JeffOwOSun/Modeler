@@ -56,18 +56,22 @@ public:
 	
 	virtual ~Model();
 
+	bool isAnimating();
+
 	//The static map of models
 	static std::map < ModelNames, Model* > m_modelList;
 
 	//function pointer, callback before draw to update necessary informations;
 	typedef void(*modelCallback)(Model*);
 	modelCallback m_beforeDraw;
+	int anim_cnt;
 private:
 	
 	modelController m_controller;
 	std::vector<Model*> m_children;
 	ModelNames m_name;
 	Model* m_parent;
+
 };
 
 #endif

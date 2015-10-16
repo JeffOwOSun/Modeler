@@ -1,6 +1,6 @@
 
 #include "MengMeiHand.h"
-
+#include "../MetaBall.h"
 // bottom of shoutao
 #define P1 -1.0f, 0.0f, 0.5f
 #define P2 -1.0f, 0.35f, 0.2f
@@ -30,8 +30,10 @@
 #define P23 -0.3, -0.2f, -0.07f
 #define P24 -0.3, -0.2f, 0.07f
 
+
 void MengMeiHand::onDraw()
 {
+	
 	drawTriangle(P2, P1, P7);
 	drawTriangle(P7, P8, P2);
 	drawTriangle(P2, P8, P9);
@@ -71,11 +73,6 @@ void MengMeiHand::onDraw()
 	drawTriangle(P18, P24, P19);
 	drawTriangle(P19, P13, P18);
 
-	glPushMatrix();
-	glTranslated(0.0f, 2.4f, 0.0f);
-	
-	drawTorus(0.6f, 0.15f);
-	glPopMatrix();
 }
 
 MengMeiHand::MengMeiHand(ModelNames name) : Model(name) {}

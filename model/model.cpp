@@ -1,12 +1,15 @@
 
-
-#include <Fl/gl.h>
+#include "../modelerview.h"
+#include "../modelerapp.h"
+#include "../modelerdraw.h"
 #include "model.h"
+#include <Fl/gl.h>
 
 map<ModelNames, Model* > Model::m_modelList;
 
 Model::Model(ModelNames name, Model* parent) :m_name(name), m_parent(parent), m_beforeDraw(NULL)
 {
+	anim_cnt = 0;
 	//add this model to the static modelList
 	m_modelList[name] = this;
 }
@@ -39,6 +42,11 @@ void Model::Draw(int levelOfDetail)
 		}
 
 	glPopMatrix();
+}
+
+bool Model::isAnimating()
+{
+	return ModelerApplication::Instance()->m_animating;
 }
 
 void Model::refreshParameters()
