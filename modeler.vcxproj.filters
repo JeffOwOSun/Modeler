@@ -19,6 +19,9 @@
     <Filter Include="Source Files\model">
       <UniqueIdentifier>{415e252f-65e7-438c-8930-fda21fe44807}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LSYS">
+      <UniqueIdentifier>{92b7dac5-4304-4ead-9310-9cc35f4697d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bitmap.cpp">
@@ -83,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="model\IndicatorModel.cpp">
       <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="lsys\LSystem.cpp">
+      <Filter>LSYS</Filter>
+    </ClCompile>
+    <ClCompile Include="lsys\treeLSystem.cpp">
+      <Filter>LSYS</Filter>
+    </ClCompile>
+    <ClCompile Include="lsys\plantLSystem.cpp">
+      <Filter>LSYS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +166,15 @@
     </ClInclude>
     <ClInclude Include="model\indicatorModel.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="lsys\LSystem.h">
+      <Filter>LSYS</Filter>
+    </ClInclude>
+    <ClInclude Include="lsys\treeLSystem.h">
+      <Filter>LSYS</Filter>
+    </ClInclude>
+    <ClInclude Include="lsys\plantLSystem.h">
+      <Filter>LSYS</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
