@@ -42,6 +42,11 @@ int main()
     controls[HEIGHT] = ModelerControl("Height", 1, 2.5, 0.1f, 1);
 	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
 
+	controls[LSYS_SHOW] = ModelerControl("L-System Show", 0, 1, 1, 0);
+	controls[LSYS_TYPE] = ModelerControl("L-System Type", 0, 1, 1, 0);
+	controls[LSYS_DEPTH] = ModelerControl("L-System Depth", 1, 10, 1, 1);
+	controls[LSYS_ANGLE] = ModelerControl("L-System Angle", 0, 90, 1, 45);
+
 	controls[ANGLE_LIMIT] = ModelerControl("Angle Limit", 0, 1, 1, 0);
 
 	controls[INVERSE_KINEMATICS] = ModelerControl("Inverse Kinematics?", 0, 1, 1, 0);
@@ -61,7 +66,7 @@ int main()
 	controls[RFOOT_CSTRN_Y] = ModelerControl("Right Foot Constraint Y", -10, 10, 0.1, 0);
 	controls[RFOOT_CSTRN_Z] = ModelerControl("Right Foot Constraint Z", -10, 10, 0.1, 0);
 
-	controls[LEVEL_OF_DETAIL] = ModelerControl("Level of Detail", 1, 5, 1, 0);
+	controls[LEVEL_OF_DETAIL] = ModelerControl("Level of Detail", 1, 10, 1, 10);
 
 	controls[LEFT_ULEG_ROTATE] = ModelerControl("Left Upper Leg Rotate", 0, 80, 1, 0);
 	controls[LEFT_ULEG_SWAYLR] = ModelerControl("Left Upper Leg Sway Left/Right", 0, 90, 1, 0);

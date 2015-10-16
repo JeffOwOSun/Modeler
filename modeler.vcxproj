@@ -150,6 +150,9 @@
     </ClCompile>
     <ClCompile Include="MarchingCube.cpp" />
     <ClCompile Include="MetaBall.cpp" />
+    <ClCompile Include="lsys\LSystem.cpp" />
+    <ClCompile Include="lsys\plantLSystem.cpp" />
+    <ClCompile Include="lsys\treeLSystem.cpp" />
     <ClCompile Include="modelerapp.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -201,6 +204,9 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="InverseKinematics.h" />
     <ClInclude Include="MarchingCube.h" />
+    <ClInclude Include="lsys\LSystem.h" />
+    <ClInclude Include="lsys\plantLSystem.h" />
+    <ClInclude Include="lsys\treeLSystem.h" />
     <ClInclude Include="mat.h" />
     <ClInclude Include="MetaBall.h" />
     <ClInclude Include="modelerapp.h" />

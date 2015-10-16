@@ -65,6 +65,11 @@ enum ModelControls
 	ZPOS, 
 	HEIGHT, 
 	ROTATE,
+	// L-System
+	LSYS_SHOW,
+	LSYS_TYPE,
+	LSYS_DEPTH,
+	LSYS_ANGLE,
 	//Switch to turn limiting of angles on and off
 	ANGLE_LIMIT,
 	//Inverse Kinematics Constraints

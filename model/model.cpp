@@ -25,8 +25,9 @@ Model* Model::getChild(const int pos)
 	return m_children[pos];
 }
 
-void Model::Draw()
+void Model::Draw(int levelOfDetail)
 {
+	--levelOfDetail;
 	glPushMatrix();
 	//call the beforeDraw callback to update transformations
 	if (m_beforeDraw) m_beforeDraw(this);
@@ -34,10 +35,11 @@ void Model::Draw()
 	m_controller.Control();
 	onDraw();
 
-	for (Model* m : m_children)
-	{
-		m->Draw();
-	}
+	if (levelOfDetail) 
+		for (Model* m : m_children)
+		{
+			m->Draw(levelOfDetail);
+		}
 
 	glPopMatrix();
 }

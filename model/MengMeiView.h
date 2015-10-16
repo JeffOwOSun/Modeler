@@ -7,6 +7,8 @@
 #include "../modelerapp.h"
 
 #include "MengMei.h"
+#include "../lsys/treeLSystem.h"
+#include "../lsys/plantLSystem.h"
 
 class MengMeiView : public ModelerView
 {
@@ -28,6 +30,8 @@ protected:
 
 private:
 	MengMei m_MengMei;
+	TreeLSystem m_treeLSystem;
+	PlantLSystem m_plantLSystem;
 	bool IKLastState = false;
 };
 
