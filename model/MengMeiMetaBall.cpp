@@ -54,4 +54,5 @@ void MengMeiMetaBall::onDraw()
 		mb->cal();
 		mb->draw(30);
 	}
+	delete mb;
 }
