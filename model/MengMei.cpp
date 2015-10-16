@@ -3,14 +3,13 @@
 #include "MengMeiHand.h"
 #include "MengMeiHead.h"
 #include "MengMeiLowerLeg.h"
+#include "MengMeiMetaBall.h"
 #include "../MetaBall.h"
 #include "MengMeiFoot.h"
 #include "indicatorModel.h"
 
 MengMei::MengMei() :Model(MENGMEI)
 {
-	this->getController()->setTransY(-5.0f);
-
 	GeneralModel* upperBody = new GeneralModel(UPPERBODY, GeneralModel::CYLINDER_SHAPE);
 	upperBody->setTexture("./res/MengMeiBody.jpg");
 	upperBody->setParam(3.0f, 0.5f, 0.75f);
@@ -25,7 +24,7 @@ MengMei::MengMei() :Model(MENGMEI)
 			//--------------------------------
 			GeneralModel* leftUpperArm = new GeneralModel(LEFTUPPERARM, GeneralModel::CYLINDER_SHAPE);
 			leftUpperArm->setParam(2.7f, 0.6f, 0.5f);
-			leftUpperArm->getController()->setRotate(70, 180, -70);
+			leftUpperArm->getController()->setRotate(70, 180, -60);
 			
 				GeneralModel* leftElbow = new GeneralModel(LEFTELBOW, GeneralModel::SPHERE_SHAPE);
 				leftElbow->setParam(0.1f);
@@ -44,6 +43,8 @@ MengMei::MengMei() :Model(MENGMEI)
 						Model* leftHand = new MengMeiHand(LEFTHAND);
 						leftHand->getController()->setTransZ(3.5f)->setRotateY(-90);
 
+							Model* metaball = new MengMeiMetaBall();
+						leftHand->addChild(metaball);
 					leftLowerArm->addChild(leftHand);
 				leftElbow->addChild(leftLowerArm);
 			leftUpperArm->addChild(leftElbow);

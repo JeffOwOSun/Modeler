@@ -183,6 +183,7 @@
     <ClCompile Include="model\MengMeiHand.cpp" />
     <ClCompile Include="model\MengMeiHead.cpp" />
     <ClCompile Include="model\MengMeiLowerLeg.cpp" />
+    <ClCompile Include="model\MengMeiMetaBall.cpp" />
     <ClCompile Include="model\MengMeiView.cpp" />
     <ClCompile Include="model\model.cpp" />
     <ClCompile Include="model\modelController.cpp" />
@@ -215,6 +216,7 @@
     <ClInclude Include="model\MengMeiHand.h" />
     <ClInclude Include="model\MengMeiHead.h" />
     <ClInclude Include="model\MengMeiLowerLeg.h" />
+    <ClInclude Include="model\MengMeiMetaBall.h" />
     <ClInclude Include="model\MengMeiView.h" />
     <ClInclude Include="model\model.h" />
     <ClInclude Include="model\modelController.h" />

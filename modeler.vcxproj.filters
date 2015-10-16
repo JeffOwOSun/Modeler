@@ -90,6 +90,9 @@
     <ClCompile Include="MetaBall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="model\MengMeiMetaBall.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bitmap.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="MetaBall.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="model\MengMeiMetaBall.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

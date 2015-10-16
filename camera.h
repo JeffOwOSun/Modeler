@@ -24,9 +24,9 @@ protected:
     Vec3f		mPosition;
     Vec3f		mUpVector;
     bool		mDirtyTransform;
-    
+public:
     void calculateViewingTransformParameters();
-    
+protected:   
     Vec3f			mLastMousePosition;
     MouseAction_t	mCurrentMouseAction;
     

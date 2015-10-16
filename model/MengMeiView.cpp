@@ -7,6 +7,10 @@ void MengMeiView::draw()
 {
 	ModelerView::draw();
 	printf("MengMeiView::draw() %d\n", time(0));
+
+	glScaled(0.5,0.5,0.5);
+	glTranslated(0.0, 2.0, 0.0);
+
 #ifdef _DEBUG
 	//Draw the axis
 	setAmbientColor(0.1f, 0.1f, 0.1f);
