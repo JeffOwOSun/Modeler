@@ -153,6 +153,11 @@ MengMeiHead::MengMeiHead() : Model(HEAD)
 
 void MengMeiHead::onDraw()
 {
+	glPushMatrix();
+	glTranslated(0.0f, 2.0f, 0.0f);
+
+	drawTorus(0.6f, 0.15f);
+	glPopMatrix();
 
 	drawTriangle(point1, point2, point3);
 	drawTriangle(point1, point4, point5);
@@ -181,7 +186,6 @@ void MengMeiHead::onDraw()
 	drawTriangle(point13, point5, point14);
 	drawTriangle(point9, point3, point12);
 	drawTriangle(point12, point3, point14);
-
 
 	// stop draw Others, hair third
 	//drawTriangle(HHT60, HHT81, HHT80);

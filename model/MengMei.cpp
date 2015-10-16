@@ -214,15 +214,6 @@ void MengMei::onDraw()
 {
 	glPushMatrix();
 	drawSphere(0.8f);
-
-	//MetaBall* mb = new MetaBall(1);
-	//mb->addBallRel(0, 0, 2.0, 4.0);
-	//mb->addBallRel(-1, -1, 2.0, 8.0);
-	//mb->addBallRel(1, 1, 2.0, 4.0);
-	//mb->addBallRel(-1, 1, 2.0, 8.0);
-	//mb->addBallRel(1, -1, 2.0, 8.0);
-	//mb->cal();
-	//mb->draw(20);
 	glPopMatrix();
 
 	//delete mb;
