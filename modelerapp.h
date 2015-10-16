@@ -82,6 +82,9 @@ private:
     static void SliderCallback(Fl_Slider *, void*);
 	static void RedrawLoop(void*);
 
+public:
+	// Well this should be private but because of time constraint
+	// Well, you know.
 	// Just a flag for updates
 	bool m_animating;
 };

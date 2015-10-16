@@ -2,7 +2,6 @@
 
 MarchingCube::MarchingCube(int numGrid)
 {
-	printf("Constructor\n\n\n");
 	// because the property of square
 	numVertices = (numGrid + 1) * (numGrid + 1) * (numGrid + 1);
 	m_vertices = new mcVertex[numVertices];
@@ -114,7 +113,6 @@ void MarchingCube::drawSurface(float threshold)
 
 MarchingCube::~MarchingCube()
 {
-	printf("Destructor\n\n\n");
 	if (m_vertices) delete[] m_vertices;
 	m_vertices = NULL;
 	numVertices = 0;

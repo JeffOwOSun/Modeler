@@ -5,6 +5,7 @@
 #define M_PI 3.141592653589793238462643383279502
 #endif
 
+#define TOTAL_FRAME 200
 enum ModelNames
 {
 	MENGMEI,

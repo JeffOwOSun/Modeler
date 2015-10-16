@@ -32,19 +32,53 @@
 
 void MengMeiHand::onDraw()
 {
-
+	anim_cnt = anim_cnt + 5;
+	anim_cnt = anim_cnt % (TOTAL_FRAME*2);
 	MetaBall* mb = new MetaBall(1);
-	mb->addBallRel(0, 0, 1.0, 4.0);
-	mb->addBallRel(-2, -2, 1.0, 4.0);
-	mb->addBallRel(2, 2, 1.0, 4.0);
-	mb->addBallRel(-2, 2, 1.0, 4.0);
-	mb->addBallRel(2, -2, 1.0, 4.0);
-	mb->addBallRel(2, 0, 1.0, 4.0);
-	mb->addBallRel(0, 2, 1.0, 4.0);
-	mb->addBallRel(-2, 0, 1.0, 4.0);
-	mb->addBallRel(0, -2, 1.0, 4.0);
-	mb->cal();
-	mb->draw(20);
+	if (isAnimating())
+	{
+		double progress = 0.0;
+		if (anim_cnt > 200)
+		{
+			progress = (double)(400 - anim_cnt) / (double)200;
+		}
+		else
+		{
+			progress = (double)anim_cnt / (double)200;
+		}
+		mb->addBallRel(0, 0, 2.0, 2.0);
+		mb->addBallRel(-2 * progress, -2 * progress, 2.0, 2.0);
+		mb->addBallRel(2 * progress, 2 * progress, 2.0, 2.0);
+		mb->addBallRel(-2 * progress, 2 * progress, 2.0, 2.0);
+		mb->addBallRel(2 * progress, -2 * progress, 2.0, 2.0);
+		mb->addBallRel(2 * progress, 0 * progress, 2.0, 2.0);
+		mb->addBallRel(0 * progress, 2 * progress, 2.0, 2.0);
+		mb->addBallRel(-2 * progress, 0 * progress, 2.0, 2.0);
+		mb->addBallRel(0 * progress, -2 * progress, 2.0, 2.0);
+
+		/*mb->addBallRel(-2 * progress, -2 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(2 * progress, 2 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(-2 * progress, 2 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(2 * progress, -2 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(2 * progress, 0 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(0 * progress, 2 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(-2 * progress, 0 * progress, 2.0 + 2 * progress, 2.0);
+		mb->addBallRel(0 * progress, -2 * progress, 2.0 + 2 * progress, 2.0);
+
+		mb->addBallRel(-2 * progress, -2 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(2 * progress, 2 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(-2 * progress, 2 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(2 * progress, -2 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(2 * progress, 0 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(0 * progress, 2 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(-2 * progress, 0 * progress, 2.0 + -2 * progress, 2.0);
+		mb->addBallRel(0 * progress, -2 * progress, 2.0 + -2 * progress, 2.0);*/
+		
+		mb->cal();
+		mb->draw(30);
+	}
+
+	
 
 	drawTriangle(P2, P1, P7);
 	drawTriangle(P7, P8, P2);
