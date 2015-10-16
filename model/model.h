@@ -36,7 +36,7 @@ public:
 	/**
 	 * \brief Call controller, be called by modelView
 	 */
-	void Draw();
+	void Draw(int levelOfDetail = INT_MAX);
 
 	void refreshParameters();
 
