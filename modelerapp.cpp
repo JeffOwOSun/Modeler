@@ -150,7 +150,8 @@ double ModelerApplication::GetControlValue(int controlNumber)
 void ModelerApplication::SetControlValue(int controlNumber, double value)
 {
 	//CUSTOM: add clamp
-	value = m_controlValueSliders[controlNumber]->clamp(value);
+	if (VAL(ANGLE_LIMIT) > 0)
+		value = m_controlValueSliders[controlNumber]->clamp(value);
 
     m_controlValueSliders[controlNumber]->value(value);
 }
@@ -158,7 +159,10 @@ void ModelerApplication::SetControlValue(int controlNumber, double value)
 void ModelerApplication::incrementControlValue(int controlNumber, int times)
 {
 	Fl_Value_Slider* slider = m_controlValueSliders[controlNumber];
-	slider->value(slider->clamp(slider->value() + times * slider->step()));
+	double value = slider->value() + times * slider->step();
+	if (VAL(ANGLE_LIMIT) > 0)
+		value = slider->clamp(value);
+	slider->value(value);
 }
 
 void ModelerApplication::randomizeControlValue(int controlNumber, double randomizeCenter, double rangePercentile, double shiftPercentile)
@@ -173,10 +177,12 @@ void ModelerApplication::randomizeControlValue(int controlNumber, double randomi
 	double uIntervallb = randomizeCenter + range * shiftPercentile;
 	double lIntervallb = 2 * randomizeCenter - uIntervalub;
 	double lIntervalub = 2 * randomizeCenter - uIntervallb;
-	uIntervalub = slider->clamp(uIntervalub);
-	uIntervallb = slider->clamp(uIntervallb);
-	lIntervalub = slider->clamp(lIntervalub);
-	lIntervallb = slider->clamp(lIntervallb);
+	if (VAL(ANGLE_LIMIT) > 0) {
+		uIntervalub = slider->clamp(uIntervalub);
+		uIntervallb = slider->clamp(uIntervallb);
+		lIntervalub = slider->clamp(lIntervalub);
+		lIntervallb = slider->clamp(lIntervallb);
+	}
 	double lrandomRange = uIntervalub - uIntervallb;
 	double urandomRange = lIntervalub - lIntervallb;
 

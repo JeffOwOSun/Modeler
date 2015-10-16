@@ -64,6 +64,8 @@ enum ModelControls
 	ZPOS, 
 	HEIGHT, 
 	ROTATE,
+	//Switch to turn limiting of angles on and off
+	ANGLE_LIMIT,
 	//Inverse Kinematics Constraints
 	INVERSE_KINEMATICS,
 	HEAD_CSTRN_X,
