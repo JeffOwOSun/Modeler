@@ -42,6 +42,8 @@ int main()
     controls[HEIGHT] = ModelerControl("Height", 1, 2.5, 0.1f, 1);
 	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
 
+	controls[ANGLE_LIMIT] = ModelerControl("Angle Limit", 0, 1, 1, 0);
+
 	controls[INVERSE_KINEMATICS] = ModelerControl("Inverse Kinematics?", 0, 1, 1, 0);
 	controls[HEAD_CSTRN_X] = ModelerControl("Head Constraint X", -10, 10, 0.1, 0);
 	controls[HEAD_CSTRN_Y] = ModelerControl("Head Constraint Y", -10, 10, 0.1, 0);

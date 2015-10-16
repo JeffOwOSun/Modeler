@@ -64,6 +64,8 @@ enum ModelControls
 	ZPOS, 
 	HEIGHT, 
 	ROTATE,
+	//Switch to turn limiting of angles on and off
+	ANGLE_LIMIT,
 	//Inverse Kinematics Constraints
 	INVERSE_KINEMATICS,
 	HEAD_CSTRN_X,
@@ -120,5 +122,6 @@ enum ModelControls
 #define SET(controlNum, value) (ModelerApplication::Instance()->SetControlValue(controlNum, value))
 #define STEPUP(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,1))
 #define STEPDOWN(controlNum) (ModelerApplication::Instance()->incrementControlValue(controlNum,-1))
-#define RANDOMIZE(controlNum) (ModelerApplication::Instance()->randomizeControlValue(controlNum,VAL(controlNum), 0.02));
+#define RANDOMIZE(controlNum, rangePercent, shiftPercent) (ModelerApplication::Instance()->randomizeControlValue(controlNum,VAL(controlNum), rangePercent, shiftPercent)) //the percentile interval should not exceed 50%
+#define RANGE(controlNum) (ModelerApplication::Instance()->getControlMaximum(controlNum) - ModelerApplication::Instance()->getControlMinimum(controlNum))
 #endif
