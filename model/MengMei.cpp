@@ -261,7 +261,7 @@ void MengMei::onDraw()
 	glRotatef(90, 0.0f, 1.0f, 0.0f);
 	glRotatef(-60, 1.0f, 0.0f, 0.0f);
 	glTranslatef(0.0f, 0.0f, -1.0f);
-	//drawCylinder(1.0f, 0.5f, 0.5f);
+	drawCylinder(1.0f, 0.5f, 0.5f);
 #ifdef _DEBUG
 	//draw the reference coordinate system
 	setAmbientColor(0.1f, 0.1f, 0.1f);

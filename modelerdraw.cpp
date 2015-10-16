@@ -257,7 +257,6 @@ void drawBox( double x, double y, double z )
         glMatrixMode( GL_MODELVIEW );
         glPushMatrix();
         glScaled( x, y, z );
-        
         glBegin( GL_QUADS );
         
         glNormal3d( 0.0, 0.0, -1.0 );
@@ -406,7 +405,7 @@ void drawTriangle( double x1, double y1, double z1,
         d = x3-x1;
         e = y3-y1;
         f = z3-z1;
-        
+		
         glBegin( GL_TRIANGLES );
         glNormal3d( b*f - c*e, c*d - a*f, a*e - b*d );
         glVertex3d( x1, y1, z1 );
